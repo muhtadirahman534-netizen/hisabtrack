@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#071511" />
+    <title>HisabTrack — Smart Personal Finance &amp; Expense Manager</title>
+    <meta
+      name="description"
+      content="HisabTrack helps you manage income, expenses, budgets, savings goals and analytics in Bangladeshi Taka — private, offline and installable."
+    />
+    <meta name="author" content="HisabTrack" />
+    <meta name="google-site-verification" content="2HeDueJgGnZbdY-1J_JS5VtlNKieAzC1KFYcapzoDxw" id="google-verify" />
+    <meta property="og:title" content="HisabTrack — Smart Personal Finance &amp; Expense Manager" />
+    <meta
+      property="og:description"
+      content="Take full control of your money in Taka. Track daily expenses, set monthly budgets, and grow your savings smarter."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- PWA / installable app -->
+    <link rel="manifest" href="manifest.json" id="pwa-manifest" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" id="pwa-icon" />
+    <link rel="apple-touch-icon" href="icon-192.png" id="pwa-apple-icon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" id="pwa-apple-capable" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" id="pwa-apple-bar" />
+    <meta name="apple-mobile-web-app-title" content="HisabTrack" id="pwa-apple-title" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="modal-root"></div>
+    <div id="lock-root"></div>
+    <div id="setup-root"></div>
+    <div id="toast-root" aria-live="polite"></div>
+    <script src="app.js"></script>
+    <script src="pwa.js"></script>
+    <script src="i18n.js"></script>
+    <script id="pwa-sw-register">
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("./sw.js").catch(function () {});
+        });
+      }
+    </script>
+  </body>
+</html>

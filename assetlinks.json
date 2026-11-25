@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.hisabtrack.app",
+        "sha256_cert_fingerprints": ["C6:C2:C0:F7:2F:D5:9B:EE:8C:C4:6C:DD:8F:66:19:CF:78:21:22:E7:F4:30:39:06:EB:5F:C8:B0:30:10:24:A0"]
+      }
+    }]

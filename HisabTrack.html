@@ -1,0 +1,2732 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#071511" />
+    <title>HisabTrack — Smart Personal Finance &amp; Expense Manager</title>
+    <meta
+      name="description"
+      content="HisabTrack helps you manage income, expenses, budgets, savings goals and analytics in Bangladeshi Taka — private, offline and installable."
+    />
+    <meta name="author" content="HisabTrack" />
+    <meta name="google-site-verification" content="2HeDueJgGnZbdY-1J_JS5VtlNKieAzC1KFYcapzoDxw" id="google-verify" />
+    <meta property="og:title" content="HisabTrack — Smart Personal Finance &amp; Expense Manager" />
+    <meta
+      property="og:description"
+      content="Take full control of your money in Taka. Track daily expenses, set monthly budgets, and grow your savings smarter."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- PWA / installable app -->
+    <style>
+/* HisabTrack — complete offline stylesheet */
+:root {
+  --bg: #071511;
+  --bg-soft: #0b1f19;
+  --panel: #0e251e;
+  --panel-2: #123027;
+  --panel-3: #173b30;
+  --border: #20483c;
+  --border-soft: #17382e;
+  --text: #e9f7f1;
+  --text-strong: #ffffff;
+  --text-soft: #cde9dd;
+  --muted: #9ab9ac;
+  --faint: #719488;
+  --primary: #22c55e;
+  --primary-hover: #4ade80;
+  --primary-soft: rgba(34, 197, 94, 0.14);
+  --primary-border: rgba(34, 197, 94, 0.38);
+  --primary-shadow: rgba(34, 197, 94, 0.28);
+  --primary-text: #a7f3d0;
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.13);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.13);
+  --danger-border: rgba(248, 113, 113, 0.28);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, 0.13);
+  --info: #38bdf8;
+  --info-soft: rgba(56, 189, 248, 0.13);
+  --accent: #102d24;
+  --accent-fg: #d9f6e8;
+  --brand-bg: linear-gradient(135deg, #22c55e, #0f9d58);
+  --featured-bg: linear-gradient(140deg, #16a34a, #0f766e);
+  --side-card: linear-gradient(145deg, rgba(34, 197, 94, 0.16), rgba(56, 189, 248, 0.06));
+  --avatar-bg: linear-gradient(135deg, #34d399, #22c55e);
+  --on-accent: #062018;
+  --topbar-bg: rgba(7, 21, 17, 0.88);
+  --sidebar-bg: rgba(11, 31, 25, 0.84);
+  --mobile-bg: rgba(11, 31, 25, 0.96);
+  --overlay: rgba(3, 12, 9, 0.74);
+  --overlay-strong: rgba(3, 12, 9, 0.94);
+  --overlay-soft: rgba(3, 12, 9, 0.85);
+  --hover-soft: rgba(255, 255, 255, 0.045);
+  --row-hover: rgba(255, 255, 255, 0.025);
+  --glow-1: rgba(34, 197, 94, 0.12);
+  --glow-2: rgba(56, 189, 248, 0.05);
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Bengali", "Hind Siliguri", "Kalpurush", "Solaimanlipi", sans-serif;
+  --on-primary: #ffffff;
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  --bg: #f4f8f6;
+  --bg-soft: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #eef6f2;
+  --panel-3: #e2f0ea;
+  --border: #d3e5dc;
+  --border-soft: #e4efe9;
+  --text: #10251d;
+  --text-strong: #062018;
+  --text-soft: #1f4a3a;
+  --muted: #58766b;
+  --faint: #829b90;
+  --primary: #15803d;
+  --primary-hover: #166534;
+  --primary-soft: rgba(21, 128, 61, 0.10);
+  --primary-border: rgba(21, 128, 61, 0.28);
+  --primary-shadow: rgba(21, 128, 61, 0.20);
+  --primary-text: #166534;
+  --success: #059669;
+  --success-soft: rgba(5, 150, 105, 0.10);
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.10);
+  --danger-border: rgba(220, 38, 38, 0.24);
+  --warning: #d97706;
+  --warning-soft: rgba(217, 119, 6, 0.12);
+  --info: #0284c7;
+  --info-soft: rgba(2, 132, 199, 0.10);
+  --accent: #e8f5ee;
+  --accent-fg: #14532d;
+  --brand-bg: linear-gradient(135deg, #22c55e, #15803d);
+  --featured-bg: linear-gradient(140deg, #16a34a, #0f766e);
+  --side-card: linear-gradient(145deg, rgba(21, 128, 61, 0.10), rgba(2, 132, 199, 0.05));
+  --avatar-bg: linear-gradient(135deg, #34d399, #15803d);
+  --on-accent: #ffffff;
+  --topbar-bg: rgba(244, 248, 246, 0.92);
+  --sidebar-bg: rgba(255, 255, 255, 0.92);
+  --mobile-bg: rgba(255, 255, 255, 0.96);
+  --overlay: rgba(15, 35, 28, 0.42);
+  --overlay-strong: rgba(15, 35, 28, 0.72);
+  --overlay-soft: rgba(15, 35, 28, 0.60);
+  --hover-soft: rgba(16, 80, 50, 0.05);
+  --row-hover: rgba(16, 80, 50, 0.035);
+  --glow-1: rgba(21, 128, 61, 0.08);
+  --glow-2: rgba(2, 132, 199, 0.05);
+  --shadow: 0 16px 40px rgba(16, 60, 40, 0.12);
+  --on-primary: #ffffff;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(900px 500px at 85% -10%, var(--glow-1), transparent 60%),
+    radial-gradient(700px 400px at -10% 10%, var(--glow-2), transparent 60%);
+  background-attachment: fixed;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: var(--primary-hover); text-decoration: none; }
+::selection { background: var(--primary); color: var(--on-accent); }
+
+/* ---------- layout ---------- */
+.app { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 246px;
+  flex: 0 0 246px;
+  border-right: 1px solid var(--border-soft);
+  background: var(--sidebar-bg);
+  backdrop-filter: blur(14px);
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.brand { display: flex; align-items: center; gap: 10px; padding: 2px 10px 24px; }
+.brand-mark {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--brand-bg);
+  display: grid; place-items: center; font-weight: 800; font-size: 18px; color: var(--on-accent);
+  box-shadow: 0 6px 18px var(--primary-shadow);
+}
+.brand-name { font-size: 17px; font-weight: 750; letter-spacing: -0.3px; }
+.brand-name span { color: var(--primary-hover); }
+.brand-tag { font-size: 10px; color: var(--faint); letter-spacing: .08em; text-transform: uppercase; }
+
+.nav { display: flex; flex-direction: column; gap: 4px; }
+.nav-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding: 14px 12px 6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 10px 12px; border-radius: 10px; color: var(--muted);
+  border: 1px solid transparent; background: transparent; width: 100%; text-align: left;
+  transition: .16s ease;
+}
+.nav-item svg { width: 18px; height: 18px; flex: none; }
+.nav-item:hover { color: var(--text); background: var(--hover-soft); }
+.nav-item.active { color: var(--text-strong); background: var(--primary-soft); border-color: var(--primary-border); }
+.nav-item.active svg { color: var(--primary-hover); }
+.nav-badge { margin-left: auto; font-size: 10px; background: var(--panel-3); color: var(--muted); padding: 1px 7px; border-radius: 999px; }
+.sidebar-foot { margin-top: auto; }
+.side-card {
+  background: var(--side-card);
+  border: 1px solid var(--primary-border); border-radius: 12px; padding: 14px;
+}
+.side-card p { margin: 0 0 10px; font-size: 12px; color: var(--text-soft); }
+.side-card .btn { width: 100%; }
+.side-user { display: flex; align-items: center; gap: 10px; padding: 16px 8px 2px; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--avatar-bg); display: grid; place-items: center; font-weight: 700; font-size: 12px; color: var(--on-accent); }
+.side-user b { display: block; font-size: 12px; }
+.side-user small { color: var(--faint); font-size: 11px; }
+
+.main { flex: 1; min-width: 0; }
+.topbar {
+  height: 70px; border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; position: sticky; top: 0; z-index: 20;
+  background: var(--topbar-bg); backdrop-filter: blur(14px);
+}
+.page-title { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.2px; }
+.page-subtitle { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.date-pill { color: var(--muted); font-size: 12px; border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
+.lang-switch { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; padding: 2px; background: var(--panel); gap: 2px; }
+.lang-switch button { border: 0; background: transparent; color: var(--muted); font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 999px; cursor: pointer; transition: .16s ease; font-family: inherit; }
+.lang-switch button:hover { color: var(--text); }
+.lang-switch button.active { background: var(--primary); color: var(--on-primary); box-shadow: 0 2px 10px var(--primary-shadow); }
+html[lang="bn"] body { font-family: "Noto Sans Bengali", "Hind Siliguri", "Kalpurush", "Solaimanlipi", var(--font); }
+.view { padding: 26px 28px 60px; max-width: 1500px; margin: 0 auto; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: var(--radius-sm); border: 1px solid transparent;
+  padding: 9px 14px; font-size: 13px; font-weight: 600; transition: .16s ease;
+  background: var(--panel-3); color: var(--text); white-space: nowrap;
+}
+.btn svg { width: 16px; height: 16px; }
+.btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: 0 6px 18px var(--primary-shadow); }
+.btn-ghost { background: transparent; color: var(--muted); }
+.btn-ghost:hover { background: var(--hover-soft); color: var(--text); }
+.btn-outline { background: transparent; border-color: var(--border); color: var(--text); }
+.btn-danger { background: var(--danger-soft); color: var(--danger); border-color: var(--danger-border); }
+.btn-sm { padding: 6px 10px; font-size: 12px; }
+.btn-block { width: 100%; }
+.icon-btn { width: 34px; height: 34px; padding: 0; border-radius: 9px; border: 1px solid var(--border); background: var(--panel); color: var(--muted); display: grid; place-items: center; }
+.icon-btn svg { width: 16px; height: 16px; }
+.icon-btn:hover { color: var(--text); border-color: var(--primary); }
+
+/* ---------- cards / grid ---------- */
+.grid { display: grid; gap: 18px; }
+.stats-grid { grid-template-columns: repeat(4, minmax(0,1fr)); margin-bottom: 20px; }
+.grid-3 { grid-template-columns: 2fr 1fr; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.span-2 { grid-column: span 2; }
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.012), transparent), var(--panel);
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+}
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px 20px 0; }
+.card-title { margin: 0; font-size: 14px; font-weight: 700; }
+.card-desc { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+.card-body { padding: 18px 20px 20px; }
+
+.stat { position: relative; padding: 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); overflow: hidden; }
+.stat.featured { background: var(--featured-bg); border-color: transparent; color: #fff; }
+.stat.featured::after { content:""; position:absolute; width:140px; height:140px; right:-45px; top:-55px; border-radius:50%; background:rgba(255,255,255,.09); }
+.stat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.stat-label { color: var(--muted); font-size: 12px; font-weight: 500; }
+.stat.featured .stat-label { color: rgba(255,255,255,.8); }
+.stat-icon { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--panel-3); color: var(--muted); }
+.stat-icon svg { width: 16px; height: 16px; }
+.stat.featured .stat-icon { background: rgba(255,255,255,.16); color: #fff; }
+.tone-income .stat-icon { color: var(--success); background: var(--success-soft); }
+.tone-expense .stat-icon { color: var(--danger); background: var(--danger-soft); }
+.tone-info .stat-icon { color: var(--info); background: var(--info-soft); }
+.stat-value { font-size: 25px; font-weight: 750; letter-spacing: -.8px; font-variant-numeric: tabular-nums; }
+.stat-hint { margin-top: 6px; font-size: 11px; color: var(--muted); }
+.stat.featured .stat-hint { color: rgba(255,255,255,.78); }
+.tabular { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.tiny { font-size: 11px; }
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.text-info { color: var(--info); }
+
+/* ---------- charts ---------- */
+.chart-wrap { width: 100%; overflow: hidden; }
+.chart-wrap svg { display: block; width: 100%; height: auto; }
+.chart-legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--muted); padding-top: 8px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 7px; }
+.donut-layout { display: grid; grid-template-columns: 210px 1fr; gap: 18px; align-items: center; }
+.donut-wrap { position: relative; width: 210px; height: 210px; }
+.donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+.donut-center small { color: var(--muted); font-size: 11px; }
+.donut-center b { font-size: 17px; font-variant-numeric: tabular-nums; }
+.cat-list { display: flex; flex-direction: column; gap: 11px; }
+.cat-item { display: grid; grid-template-columns: 10px 1fr auto; gap: 9px; align-items: center; font-size: 12px; }
+.cat-item .bar { height: 6px; border-radius: 999px; background: var(--panel-3); margin-top: 5px; overflow: hidden; grid-column: 2 / 4; }
+.cat-item .bar i { display: block; height: 100%; border-radius: 999px; }
+
+/* ---------- list / table ---------- */
+.tx-list { display: flex; flex-direction: column; }
+.tx-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-soft); }
+.tx-row:last-child { border-bottom: 0; }
+.tx-icon { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; flex: none; background: var(--panel-3); color: var(--muted); font-size: 15px; }
+.tx-icon.income { background: var(--success-soft); color: var(--success); }
+.tx-icon.expense { background: var(--danger-soft); color: var(--danger); }
+.tx-icon.savings { background: var(--info-soft); color: var(--info); }
+.tx-main { min-width: 0; flex: 1; }
+.tx-title { font-weight: 600; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-meta { color: var(--muted); font-size: 11px; margin-top: 2px; }
+.tx-amount { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.amount-income { color: var(--success); }
+.amount-expense { color: var(--danger); }
+.amount-savings { color: var(--info); }
+.row-actions { display: flex; gap: 4px; opacity: .35; transition: .15s; }
+.tx-row:hover .row-actions, .row-actions:focus-within { opacity: 1; }
+
+.table { width: 100%; border-collapse: collapse; }
+.table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.table td { padding: 12px; border-bottom: 1px solid var(--border-soft); font-size: 13px; }
+.table tr:last-child td { border-bottom: 0; }
+.table tbody tr:hover { background: var(--row-hover); }
+
+.progress { height: 8px; border-radius: 999px; background: var(--panel-3); overflow: hidden; }
+.progress i { display: block; height: 100%; border-radius: 999px; background: var(--primary); transition: width .4s ease; }
+.progress.good i { background: var(--success); }
+.progress.warn i { background: var(--warning); }
+.progress.over i { background: var(--danger); }
+.budget-row { padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
+.budget-row:last-child { border-bottom: 0; }
+.budget-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; margin-bottom: 8px; }
+.budget-top small { color: var(--muted); font-variant-numeric: tabular-nums; }
+.summary-box { background: var(--accent); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 18px; }
+
+.empty { text-align: center; padding: 34px 16px; color: var(--muted); }
+.empty-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 12px; background: var(--panel-3); color: var(--faint); }
+.empty h4 { margin: 0 0 5px; color: var(--text); font-size: 14px; }
+.empty p { margin: 0 0 14px; font-size: 12px; }
+
+.toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+.search { position: relative; flex: 1; min-width: 200px; }
+.search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--faint); }
+.search input { width: 100%; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: var(--radius-sm); padding: 9px 12px 9px 36px; outline: none; }
+.search input:focus { border-color: var(--primary); }
+.input, select.input, textarea.input {
+  background: var(--bg-soft); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius-sm); padding: 9px 11px; outline: none; width: 100%;
+}
+.input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+select.input { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b98b4' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+.chips { display: flex; gap: 7px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--border); background: var(--panel); color: var(--muted); border-radius: 999px; padding: 6px 13px; font-size: 12px; }
+.chip:hover { color: var(--text); }
+.chip.active { background: var(--primary-soft); border-color: var(--primary-border); color: var(--primary-text); }
+
+/* ---------- modal / toast ---------- */
+.modal-overlay { position: fixed; inset: 0; background: var(--overlay); backdrop-filter: blur(4px); z-index: 100; display: grid; place-items: center; padding: 20px; }
+.modal { width: min(480px, 100%); background: var(--panel); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); max-height: 92vh; overflow: auto; }
+.modal-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--border-soft); }
+.modal-head h3 { margin: 0; font-size: 15px; }
+.modal-body { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.modal-foot { display: flex; justify-content: flex-end; gap: 9px; padding: 16px 20px; border-top: 1px solid var(--border-soft); }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: var(--muted); font-weight: 600; }
+.field .hint { font-size: 11px; color: var(--faint); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.segmented { display: grid; grid-template-columns: repeat(3,1fr); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 3px; gap: 3px; }
+.segmented button { border: 0; background: transparent; color: var(--muted); padding: 8px; border-radius: 7px; font-size: 12px; font-weight: 600; }
+.segmented button.active { background: var(--primary); color: var(--on-primary); }
+.segmented button[data-type="expense"].active { background: var(--danger); color: var(--on-primary); }
+.segmented button[data-type="savings"].active { background: var(--info); color: var(--on-primary); }
+#toast-root { position: fixed; right: 22px; bottom: 22px; z-index: 200; display: flex; flex-direction: column; gap: 9px; }
+.toast { background: var(--panel-2); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 10px; padding: 12px 16px; box-shadow: var(--shadow); font-size: 13px; min-width: 230px; animation: slideIn .22s ease; }
+.toast.success { border-left-color: var(--success); }
+.toast.error { border-left-color: var(--danger); }
+@keyframes slideIn { from { transform: translateX(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* ---------- assistant ---------- */
+.score-hero { display: flex; align-items: center; gap: 16px; background: var(--accent); border-radius: 12px; padding: 16px; margin-bottom: 18px; }
+.score-badge { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; font-weight: 800; color: var(--on-primary); flex: none; box-shadow: 0 0 0 5px var(--primary-soft); }
+.score-hero h4 { margin: 0 0 3px; font-size: 14px; }
+.score-hero p { margin: 0; color: var(--muted); font-size: 12px; }
+.insights { display: flex; flex-direction: column; gap: 14px; }
+.insight { display: flex; gap: 11px; font-size: 13px; }
+.insight .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex: none; }
+.insight b { display: block; }
+.insight span { color: var(--muted); }
+.chat { display: flex; flex-direction: column; gap: 12px; height: 230px; overflow-y: auto; padding-right: 6px; }
+.chat-msg { max-width: 82%; padding: 10px 13px; border-radius: 12px; font-size: 13px; line-height: 1.55; }
+.chat-msg.user { align-self: flex-end; background: var(--primary); color: var(--on-primary); border-bottom-right-radius: 3px; }
+.chat-msg.bot { align-self: flex-start; background: var(--panel-3); border-bottom-left-radius: 3px; }
+.chat-form { display: flex; gap: 9px; margin-top: 14px; }
+.chat-form input { flex: 1; }
+
+/* ---------- misc ---------- */
+.divider { height: 1px; background: var(--border-soft); margin: 18px 0; }
+.stat-mini { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border-soft); font-size: 13px; }
+.stat-mini:last-child { border-bottom: 0; }
+.tag { font-size: 10px; padding: 2px 8px; border-radius: 999px; background: var(--panel-3); color: var(--muted); }
+.mobile-nav { display: none; }
+
+/* ---------- PIN lock ---------- */
+body.pin-locked #app,
+body.pin-locked #modal-root { visibility: hidden; }
+.lock-screen {
+  position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 20px;
+  background: var(--overlay-strong);
+  backdrop-filter: blur(10px);
+}
+.lock-card {
+  width: min(100%, 390px); padding: 30px 26px; text-align: center;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow);
+}
+.lock-mark {
+  width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 16px; display: grid; place-items: center;
+  font-size: 26px; font-weight: 800; color: var(--on-accent);
+  background: var(--brand-bg);
+  box-shadow: 0 0 0 6px var(--primary-soft);
+}
+.lock-card h2 { margin: 0 0 5px; font-size: 21px; letter-spacing: -.2px; }
+.lock-sub { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+.pin-input { text-align: center; letter-spacing: 10px; font-size: 21px; padding-left: 20px; }
+.lock-error { min-height: 18px; margin-bottom: 5px; color: var(--danger); font-size: 12px; }
+.lock-link {
+  display: block; margin: 15px auto 0; padding: 4px; border: 0; background: none;
+  color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 3px;
+}
+.lock-link:hover { color: var(--text); }
+.lock-shake { animation: pinShake .32s ease; }
+@keyframes pinShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-7px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-4px); }
+}
+.recovery-code {
+  margin-top: 4px; padding: 14px; text-align: center; border-radius: 10px;
+  background: var(--bg-soft); border: 1px dashed var(--primary);
+  font-size: 21px; font-weight: 800; letter-spacing: 3px; color: var(--primary-text); user-select: all;
+}
+
+/* ---------- guided setup ---------- */
+.setup-screen {
+  position: fixed; inset: 0; z-index: 250; display: grid; place-items: center; padding: 20px;
+  background: var(--overlay-soft); backdrop-filter: blur(7px);
+}
+body.setup-welcome #app, body.setup-welcome #modal-root { visibility: hidden; }
+.setup-card {
+  width: min(100%, 440px); padding: 28px; background: var(--panel);
+  border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow);
+}
+.setup-mark {
+  width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 16px; display: grid; place-items: center;
+  font-size: 26px; font-weight: 800; color: var(--on-accent);
+  background: var(--brand-bg); box-shadow: 0 0 0 6px var(--primary-soft);
+}
+.setup-card h2 { margin: 0 0 6px; font-size: 20px; text-align: center; }
+.setup-sub { margin: 0 0 16px; color: var(--muted); font-size: 13px; text-align: center; }
+.setup-ai {
+  display: flex; gap: 11px; padding: 13px; margin-bottom: 16px; border-radius: 12px;
+  background: var(--primary-soft); border: 1px solid var(--primary-border);
+  font-size: 12px; line-height: 1.6; color: var(--text-soft);
+}
+.setup-ai b { color: var(--text-strong); }
+.ai-avatar {
+  flex: none; width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center;
+  background: var(--primary); color: var(--on-primary); font-size: 14px;
+}
+.setup-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; font-size: 11px; color: var(--muted); }
+.setup-brand { font-weight: 800; color: var(--text); }
+.setup-progress { color: var(--primary-hover); font-weight: 700; }
+.setup-bar { height: 5px; border-radius: 99px; background: var(--panel-3); overflow: hidden; margin-bottom: 18px; }
+.setup-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-hover)); border-radius: 99px; transition: width .25s ease; }
+.setup-input { font-size: 16px; }
+.apk-top { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------- greeting, theme & analytics ---------- */
+.page-greeting { margin: 0 0 18px; }
+.page-greeting h2 { margin: 0; font-size: 21px; font-weight: 750; letter-spacing: -.4px; }
+.page-greeting p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+.theme-switch { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: 999px; background: var(--panel); }
+.theme-switch button { width: 28px; height: 26px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); display: grid; place-items: center; transition: .16s ease; }
+.theme-switch button svg { width: 14px; height: 14px; }
+.theme-switch button:hover { color: var(--text); }
+.theme-switch button.active { background: var(--primary-soft); color: var(--primary-text); }
+.range-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 999px; }
+.range-tabs button { border: 0; background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.range-tabs button:hover { color: var(--text); }
+.range-tabs button.active { background: var(--primary); color: var(--on-primary); box-shadow: 0 4px 12px var(--primary-shadow); }
+.tone-warning .stat-icon { color: var(--warning); background: var(--warning-soft); }
+.week-chart { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; align-items: end; height: 220px; }
+.week-col { display: flex; flex-direction: column; align-items: center; gap: 7px; height: 100%; min-width: 0; }
+.week-bar { flex: 1; width: 100%; max-width: 26px; background: var(--panel-3); border-radius: 8px; display: flex; align-items: flex-end; overflow: hidden; }
+.week-bar i { display: block; width: 100%; border-radius: 8px; background: linear-gradient(180deg, var(--primary-hover), var(--primary)); transition: height .4s ease; }
+.week-col small { color: var(--muted); font-size: 10px; white-space: nowrap; }
+.table tfoot td { border-top: 1px solid var(--border); border-bottom: 0; font-size: 12px; background: var(--panel-2); }
+.tip-grid { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.tip-grid li { display: flex; gap: 12px; padding: 13px; border: 1px solid var(--border-soft); border-radius: 12px; background: var(--panel-2); font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+.tip-num { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; flex: none; background: var(--primary-soft); color: var(--primary-text); font-weight: 800; font-size: 11px; }
+
+/* ---------- savings goals ---------- */
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.goal-card { border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--panel); box-shadow: 0 8px 22px rgba(0, 0, 0, .08); }
+.goal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.goal-title { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.goal-icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; flex: none; background: var(--primary-soft); color: var(--primary-text); }
+.goal-icon.done { background: var(--success-soft); color: var(--success); }
+.goal-icon svg { width: 18px; height: 18px; }
+.goal-title h4 { margin: 0; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.goal-title small { display: flex; align-items: center; gap: 4px; margin-top: 2px; color: var(--muted); font-size: 11px; }
+.goal-title small svg { width: 11px; height: 11px; }
+.goal-amount { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-top: 16px; }
+.goal-amount b { font-size: 20px; font-variant-numeric: tabular-nums; }
+.goal-amount span { font-size: 12px; font-weight: 700; }
+.goal-sub { color: var(--muted); font-size: 11px; margin: 2px 0 10px; }
+.goal-foot { display: flex; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.goal-foot > div { display: flex; flex-direction: column; min-width: 0; }
+.goal-foot small { color: var(--muted); font-size: 10px; }
+.goal-foot b { font-size: 13px; font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.theme-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.theme-cards button { border: 1px solid var(--border); background: var(--panel-2); border-radius: 12px; padding: 14px; color: var(--muted); display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; transition: .16s ease; }
+.theme-cards button svg { width: 18px; height: 18px; }
+.theme-cards button b { color: var(--text); font-size: 13px; }
+.theme-cards button small { font-size: 11px; }
+.theme-cards button.active { border-color: var(--primary); background: var(--primary-soft); color: var(--primary-text); box-shadow: 0 0 0 3px var(--primary-soft); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1180px) {
+  .stats-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid-3 { grid-template-columns: 1fr; }
+  .span-2 { grid-column: auto; }
+}
+@media (max-width: 820px) {
+  .sidebar { display: none; }
+  .topbar { padding: 0 16px; }
+  .view { padding: 18px 16px 90px; }
+  .date-pill { display: none; }
+  .donut-layout { grid-template-columns: 1fr; justify-items: center; }
+  .card-head { flex-wrap: wrap; }
+  .range-tabs { width: 100%; }
+  .week-chart { gap: 4px; }
+  .week-col small { font-size: 9px; transform: rotate(-35deg); transform-origin: center; }
+  .mobile-nav {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+    background: var(--mobile-bg); backdrop-filter: blur(12px); border-top: 1px solid var(--border);
+    justify-content: space-around; padding: 8px 4px;
+  }
+  .mobile-nav button { background: none; border: 0; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; padding: 4px 8px; }
+  .mobile-nav button svg { width: 19px; height: 19px; }
+  .mobile-nav button.active { color: var(--primary-hover); }
+}
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat { padding: 13px; }
+  .stat-value { font-size: 19px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .page-title { font-size: 15px; }
+  .table th:nth-child(3), .table td:nth-child(3) { display: none; }
+  .theme-switch { display: none; }
+  .range-tabs button { padding: 6px 9px; font-size: 11px; }
+  .goal-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="modal-root"></div>
+    <div id="lock-root"></div>
+    <div id="setup-root"></div>
+    <div id="toast-root" aria-live="polite"></div>
+    <script>
+/* ==========================================================================
+   HisabTrack — complete personal finance app (no build step, no dependencies)
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ---------- tiny DOM helpers ---------- */
+  const $ = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.prototype.slice.call((root || document).querySelectorAll(sel));
+  const esc = (s) =>
+    String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    })[c]);
+  const uid = () => "id_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
+  function isBnLang() {
+    try { return localStorage.getItem("takatrack.lang") !== "en"; }
+    catch (e) { return true; }
+  }
+
+  const ICONS = {
+    dashboard: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+    wallet: '<rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M16 14h2"/>',
+    up: '<path d="M7 17 17 7M7 7h10v10"/>',
+    down: '<path d="M7 7l10 10M17 7v10H7"/>',
+    piggy: '<path d="M4 12a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2h-2l-1 4h-3l-1-2h-4l-1 2H7l-1-4H4z"/><path d="M9 6V4M15 6V4"/>',
+    pie: '<path d="M21 12a9 9 0 1 1-9-9v9z"/><path d="M21 9a9 9 0 0 0-6-6v6z"/>',
+    receipt: '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 7h8M8 11h8"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    sparkles: '<path d="m12 3 1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z"/><path d="m19 15 .7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7L19 15z"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3v-4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.4 7 7.2 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V3h4v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4h-.2a1.7 1.7 0 0 0-1.6 1z"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+    edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/>',
+    close: '<path d="M18 6 6 18M6 6l12 12"/>',
+    download: '<path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/>',
+    upload: '<path d="M12 16V4m0 0 4 4m-4-4L8 8M4 17v3h16v-3"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/>',
+    send: '<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+    landmark: '<path d="m3 10 9-6 9 6M5 10v9h14v-9M3 20h18M9 20v-6h6v6"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+    refresh: '<path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/>',
+    analytics: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    goal: '<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+    trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/>',
+    check: '<path d="m5 12 4 4L19 6"/>',
+    flag: '<path d="M5 21V4M5 5h13l-2.5 4L18 13H5"/>',
+  };
+  function icon(name, cls) {
+    return '<svg class="' + (cls || "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || ICONS.info) + "</svg>";
+  }
+
+  /* ---------- constants ---------- */
+  const ROUTES = {
+    dashboard: { title: "Dashboard", subtitle: "Your money at a glance", icon: "dashboard" },
+    transactions: { title: "Transactions", subtitle: "Every taka in and out", icon: "receipt" },
+    budgets: { title: "Budgets", subtitle: "Plan your monthly spending", icon: "target" },
+    analytics: { title: "Analytics", subtitle: "Charts built from your real transactions", icon: "analytics" },
+    assistant: { title: "Savings Assistant", subtitle: "Smart, rule-based insights", icon: "sparkles" },
+    goals: { title: "Savings Goals", subtitle: "Save towards what matters to you", icon: "goal" },
+    settings: { title: "Settings", subtitle: "Preferences and your data", icon: "settings" },
+  };
+  const CATEGORIES = {
+    income: ["Salary", "Freelance", "Business", "Investment", "Gift", "Other"],
+    expense: ["Food", "Rent", "Transport", "Utilities", "Shopping", "Health", "Education", "Entertainment", "Other"],
+    savings: ["Emergency Fund", "Goals", "Investment", "Other"],
+  };
+  const COLORS = ["#22c55e", "#38bdf8", "#fbbf24", "#f87171", "#34d399", "#a78bfa", "#fb923c", "#2dd4bf"];
+  const SYMBOLS = { BDT: "৳", USD: "$", INR: "₹", GBP: "£" };
+  const STORE_KEY = "takatrack.data.v1";
+  const PIN_KEY = "takatrack.pin.v1";
+  const SETUP_KEY = "takatrack.setup.v1";
+  const pin = { data: null, locked: false, recovering: false, lastActivity: Date.now() };
+  const setup = { step: 0, data: {}, replay: false };
+
+  /* ---------- PIN lock helpers ---------- */
+  function simpleHash(str) {
+    let h1 = 2166136261, h2 = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      const c = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ c, 16777619);
+      h2 = Math.imul((h2 + c * (i + 7)) | 0 ^ (h2 >>> 13), 1274126177);
+    }
+    return ("00000000" + (h1 >>> 0).toString(16)).slice(-8) + ("00000000" + (h2 >>> 0).toString(16)).slice(-8);
+  }
+  function hashPin(value, salt) {
+    const input = salt + ":" + value;
+    if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+      return window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(input))
+        .then(function (buf) {
+          return "sha256$" + Array.prototype.map.call(new Uint8Array(buf), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+        })
+        .catch(function () { return Promise.resolve("simple$" + simpleHash(input)); });
+    }
+    return Promise.resolve("simple$" + simpleHash(input));
+  }
+  function randomBytes(n) {
+    const arr = new Uint8Array(n);
+    if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(arr);
+    else for (let i = 0; i < n; i++) arr[i] = Math.floor(Math.random() * 256);
+    return arr;
+  }
+  function newSalt() {
+    return Array.prototype.map.call(randomBytes(8), function (b) { return ("0" + b.toString(16)).slice(-2); }).join("");
+  }
+  function makeRecovery() {
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    return Array.prototype.map.call(randomBytes(8), function (b) { return chars[b % chars.length]; }).join("");
+  }
+  function loadPin() {
+    try {
+      const p = JSON.parse(localStorage.getItem(PIN_KEY) || "null");
+      if (p && p.salt && p.hash) return p;
+    } catch (e) {}
+    return { enabled: false, hash: "", salt: "", recovery: "", autoLock: 5 };
+  }
+  function savePin() {
+    try { localStorage.setItem(PIN_KEY, JSON.stringify(pin.data)); }
+    catch (e) { toast("Could not save PIN", "error"); }
+  }
+  function disablePin() {
+    pin.data.enabled = false; pin.data.hash = ""; pin.data.salt = ""; pin.data.recovery = "";
+    savePin();
+  }
+
+  /* ---------- guided setup ---------- */
+  const SETUP_STEPS = [
+    { key: "income", title: "Monthly income",
+      tip: "Let us begin with the money that comes in. Enter your monthly salary or total regular income — for example 45000.",
+      hint: "Salary, freelance, business — anything you receive every month." },
+    { key: "rent", title: "House rent",
+      tip: "Now your biggest fixed cost. Enter the monthly rent you pay for your home.",
+      hint: "If you live with family and pay nothing, enter 0." },
+    { key: "food", title: "Food & groceries",
+      tip: "Tell us what you usually spend on food, groceries and daily meals in one month.",
+      hint: "A rough average is fine — you can edit everything later." },
+    { key: "other", title: "Transport, utilities & shopping",
+      tip: "Almost done. Enter your combined monthly spending on transport, electricity/internet and shopping. We will split it into three budgets for you.",
+      hint: "Example: 8000 becomes roughly 3200 transport, 2800 utilities, 2000 shopping." },
+    { key: "savings", title: "Monthly savings",
+      tip: "Great habit! How much would you like to set aside every month? We will record it as an emergency fund contribution.",
+      hint: "Even a small amount counts. Enter 0 to skip." },
+    { key: "budget", title: "Monthly spending limit",
+      tip: "Finally, set a total monthly spending limit. We will use it to show your budget health on the dashboard.",
+      hint: "Leave blank and we will calculate it from your answers." },
+  ];
+  function markSetupDone() {
+    try { localStorage.setItem(SETUP_KEY, "done"); } catch (e) {}
+  }
+  function setupHTML() {
+    const step = setup.step;
+    if (step === 0) {
+      return '<div class="setup-screen"><div class="setup-card">' +
+        '<div class="setup-mark">৳</div><h2>Welcome to HisabTrack</h2>' +
+        '<p class="setup-sub">Your personal money manager. Let us set it up together in a few quick steps.</p>' +
+        '<div class="setup-ai"><span class="ai-avatar">✦</span><div><b>Hi, I am your savings assistant.</b><br/>First, what should I call you?</div></div>' +
+        '<form data-form="setup-name"><div class="field"><label>Your name</label>' +
+        '<input class="input setup-input" name="name" placeholder="e.g. Rahim" maxlength="40" required autofocus/></div>' +
+        '<button class="btn btn-primary btn-block" type="submit" style="margin-top:14px">Get started</button></form>' +
+        "</div></div>";
+    }
+    const i = step - 1;
+    const s = SETUP_STEPS[i];
+    const pct = Math.round((step / (SETUP_STEPS.length + 1)) * 100);
+    return '<div class="setup-screen"><div class="setup-card">' +
+      '<div class="setup-top"><span class="setup-brand">✦ HisabTrack</span><span class="setup-progress">Step ' + (i + 1) + " / " + SETUP_STEPS.length + "</span></div>" +
+      '<div class="setup-bar"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="setup-ai"><span class="ai-avatar">✦</span><div>' + esc(s.tip) + "</div></div>" +
+      "<h2>" + s.title + '</h2><p class="setup-sub">' + esc(s.hint) + "</p>" +
+      '<form data-form="setup-step"><div class="field"><label>Amount (BDT)</label>' +
+      '<input class="input setup-input" name="value" type="number" min="0" step="1" inputmode="numeric" placeholder="0" value="' + esc(setup.data[s.key] || "") + '"/></div>' +
+      '<button class="btn btn-primary btn-block" type="submit" style="margin-top:14px">' + (i === SETUP_STEPS.length - 1 ? "Finish setup" : "Next") + "</button></form>" +
+      '<button class="lock-link" data-action="setup-skip">Skip setup</button>' +
+      "</div></div>";
+  }
+  function startSetup(replay) {
+    setup.replay = !!replay;
+    setup.data = {};
+    showSetup(0);
+  }
+  function showSetup(step) {
+    setup.step = typeof step === "number" ? step : 0;
+    document.body.classList.toggle("setup-welcome", setup.step === 0);
+    const root = $("#setup-root");
+    if (root) root.innerHTML = setupHTML();
+    const input = $(".setup-input");
+    if (input) input.focus();
+  }
+  function hideSetup() {
+    document.body.classList.remove("setup-welcome");
+    const root = $("#setup-root");
+    if (root) root.innerHTML = "";
+  }
+  function finishSetup() {
+    const d = setup.data;
+    const num = function (k) { return Math.max(0, Number(d[k]) || 0); };
+    const income = num("income"), rent = num("rent"), food = num("food"), other = num("other"), savings = num("savings");
+    const transport = Math.round(other * 0.4), utilities = Math.round(other * 0.35), shopping = Math.max(0, other - transport - utilities);
+    const now = new Date();
+    const txs = [];
+    function add(type, amount, category, note, day) {
+      if (amount <= 0) return;
+      const dt = dateStr(new Date(now.getFullYear(), now.getMonth(), Math.min(day, now.getDate())));
+      txs.push({ id: uid(), type: type, amount: amount, category: category, note: note, date: dt });
+    }
+    add("income", income, "Salary", "Monthly salary", 1);
+    add("expense", rent, "Rent", "House rent", 3);
+    add("expense", food, "Food", "Groceries & meals", 8);
+    add("expense", transport, "Transport", "Daily commute", 12);
+    add("expense", utilities, "Utilities", "Electricity & internet", 15);
+    add("savings", savings, "Emergency Fund", "Monthly savings", 18);
+    add("expense", shopping, "Shopping", "Personal items", 20);
+    const newBudgets = [
+      { id: uid(), category: "Rent", limit: rent },
+      { id: uid(), category: "Food", limit: food },
+      { id: uid(), category: "Transport", limit: transport },
+      { id: uid(), category: "Utilities", limit: utilities },
+      { id: uid(), category: "Shopping", limit: shopping },
+    ].filter(function (b) { return b.limit > 0; });
+    const limit = Number(d.budget);
+    const totalLimit = limit > 0 ? limit : rent + food + other;
+    if (setup.replay) {
+      state.transactions = state.transactions.concat(txs);
+      newBudgets.forEach(function (nb) {
+        const old = state.budgets.filter(function (b) { return b.category === nb.category; })[0];
+        if (old) old.limit = nb.limit; else state.budgets.push(nb);
+      });
+    } else {
+      state.transactions = txs;
+      state.budgets = newBudgets;
+    }
+    state.prefs.overallBudget = totalLimit;
+    save(); markSetupDone(); hideSetup(); render();
+    toast("Setup complete — your numbers are ready!");
+  }
+
+  /* ---------- dates ---------- */
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function dateStr(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function todayStr() { return dateStr(new Date()); }
+  function monthOf(s) { return String(s || "").slice(0, 7); }
+  function currentKey() { return monthOf(todayStr()); }
+  function monthKeysBack(n) {
+    const out = [], now = new Date();
+    for (let i = n - 1; i >= 0; i--) {
+      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      out.push(d.getFullYear() + "-" + pad(d.getMonth() + 1));
+    }
+    return out;
+  }
+  function monthKeysForRange(txs, range) {
+    if (range !== "all") return monthKeysBack(Number(range) || 6);
+    const dates = (txs || []).map(function (x) { return String(x.date || "").slice(0, 7); }).filter(Boolean).sort();
+    if (!dates.length) return monthKeysBack(1);
+    const first = dates[0].split("-"), now = new Date();
+    let n = (now.getFullYear() - Number(first[0])) * 12 + (now.getMonth() + 1 - Number(first[1])) + 1;
+    n = Math.max(1, Math.min(36, n));
+    return monthKeysBack(n);
+  }
+  function addDays(d, n) { const x = new Date(d.getTime()); x.setDate(x.getDate() + n); return x; }
+  function weekBuckets(txs, count) {
+    const today = new Date();
+    const end = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const out = [];
+    for (let i = count - 1; i >= 0; i--) {
+      const start = addDays(end, -((i + 1) * 7 - 1));
+      const key = dateStr(start);
+      const spend = (txs || []).filter(function (x) {
+        if (x.type !== "expense") return false;
+        const ds = String(x.date || "");
+        return ds >= key && ds <= dateStr(addDays(start, 6));
+      }).reduce(function (s, x) { return s + (Number(x.amount) || 0); }, 0);
+      out.push({ key: key, label: start.toLocaleDateString("en-US", { month: "short", day: "numeric" }), spend: spend });
+    }
+    return out;
+  }
+  function monthLabel(key, short) {
+    const p = String(key).split("-");
+    const d = new Date(Number(p[0]), Number(p[1]) - 1, 1);
+    return d.toLocaleDateString("en-US", { month: short ? "short" : "long", year: "numeric" });
+  }
+  function prettyDate(s) {
+    const d = new Date(String(s) + "T00:00:00");
+    return isNaN(d.getTime()) ? s : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  }
+
+  /* ---------- money ---------- */
+  function money(n, opts) {
+    opts = opts || {};
+    const sym = SYMBOLS[(state && state.prefs && state.prefs.currency) || "BDT"] || "৳";
+    const abs = Math.abs(Math.round(Number(n) || 0)).toLocaleString("en-US");
+    const sign = opts.signed ? (n > 0 ? "+" : n < 0 ? "−" : "") : n < 0 ? "−" : "";
+    return sign + sym + " " + abs;
+  }
+  function compact(n) {
+    n = Number(n) || 0;
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1000) return Math.round(n / 1000) + "k";
+    return String(Math.round(n));
+  }
+
+  /* ---------- calculations ---------- */
+  function totals(txs) {
+    const t = { income: 0, expenses: 0, savings: 0, balance: 0, savingsRate: 0 };
+    (txs || []).forEach(function (x) {
+      const a = Number(x.amount) || 0;
+      if (x.type === "income") t.income += a;
+      else if (x.type === "savings") t.savings += a;
+      else t.expenses += a;
+    });
+    t.balance = t.income - t.expenses - t.savings;
+    t.savingsRate = t.income ? t.savings / t.income : 0;
+    return t;
+  }
+  function inMonth(txs, key) { return (txs || []).filter(function (x) { return monthOf(x.date) === key; }); }
+  function monthlySeries(txs, keys) {
+    return keys.map(function (k) {
+      const t = totals(inMonth(txs, k));
+      return { key: k, label: new Date(Number(k.slice(0, 4)), Number(k.slice(5, 7)) - 1, 1).toLocaleDateString("en-US", { month: "short" }), income: t.income, expenses: t.expenses, savings: t.savings, rate: t.savingsRate };
+    });
+  }
+  function categoryBreakdown(txs) {
+    const map = {};
+    (txs || []).forEach(function (x) {
+      if (x.type !== "expense") return;
+      map[x.category] = (map[x.category] || 0) + (Number(x.amount) || 0);
+    });
+    return Object.keys(map).map(function (k) { return { category: k, value: map[k] }; }).sort(function (a, b) { return b.value - a.value; });
+  }
+  function budgetUsage(txs, budgets, key, overall) {
+    const monthTxs = inMonth(txs, key);
+    const rows = (budgets || []).map(function (b) {
+      const spent = monthTxs.filter(function (x) { return x.type === "expense" && x.category === b.category; })
+        .reduce(function (s, x) { return s + (Number(x.amount) || 0); }, 0);
+      const limit = Number(b.limit) || 0;
+      const pct = limit ? (spent / limit) * 100 : 0;
+      return { category: b.category, id: b.id, spent: spent, limit: limit, pct: pct, status: pct >= 100 ? "over" : pct >= 80 ? "warn" : "good" };
+    }).sort(function (a, b) { return b.pct - a.pct; });
+    let overallRow = null;
+    if (overall > 0) {
+      const spent = totals(monthTxs).expenses;
+      const pct = (spent / overall) * 100;
+      overallRow = { spent: spent, limit: overall, pct: pct, status: pct >= 100 ? "over" : pct >= 80 ? "warn" : "good" };
+    }
+    return { categories: rows, overall: overallRow };
+  }
+  function buildReport(d) {
+    const all = totals(d.transactions);
+    const key = currentKey();
+    const month = totals(inMonth(d.transactions, key));
+    const prevDate = new Date();
+    prevDate.setDate(1); prevDate.setMonth(prevDate.getMonth() - 1);
+    const prevExpenses = totals(inMonth(d.transactions, monthOf(dateStr(prevDate)))).expenses;
+    const avgKeys = monthKeysBack(3);
+    const incomes = avgKeys.map(function (k) { return totals(inMonth(d.transactions, k)).income; }).filter(function (v) { return v > 0; });
+    const avgIncome = incomes.length ? Math.round(incomes.reduce(function (s, v) { return s + v; }, 0) / incomes.length) : 0;
+    const breakdown = categoryBreakdown(inMonth(d.transactions, key));
+    const usage = budgetUsage(d.transactions, d.budgets, key, d.prefs.overallBudget);
+    const insights = [];
+    let score = 50;
+    const rate = all.savingsRate;
+    if (rate >= 0.2) { score += 25; insights.push({ tone: "positive", title: "Healthy savings rate", message: "You are saving " + Math.round(rate * 100) + "% of your income. Keep it up!" }); }
+    else if (rate > 0) { score += 10; insights.push({ tone: "warning", title: "Room to save more", message: "Your savings rate is " + Math.round(rate * 100) + "%. Aim for at least 20%." }); }
+    else { score -= 12; insights.push({ tone: "danger", title: "No savings recorded", message: "Try setting aside a small amount every month, even ৳ 500 counts." }); }
+    const over = usage.categories.filter(function (x) { return x.pct >= 100; });
+    if (over.length) { score -= 15; insights.push({ tone: "danger", title: "Budget exceeded", message: over.length + " categor" + (over.length > 1 ? "ies are" : "y is") + " over limit, led by " + over[0].category + "." }); }
+    else if (usage.categories.length) { score += 10; insights.push({ tone: "positive", title: "Budgets on track", message: "You are within all of your category limits this month." }); }
+    if (breakdown.length) {
+      const top = breakdown[0];
+      const share = month.expenses ? top.value / month.expenses : 0;
+      if (share > 0.35) { score -= 6; insights.push({ tone: "warning", title: "Top spending category", message: top.category + " takes " + Math.round(share * 100) + "% of this month's expenses." }); }
+      else { score += 5; insights.push({ tone: "info", title: "Spending is balanced", message: "No single category dominates your expenses this month." }); }
+    }
+    if (prevExpenses > 0 && month.expenses > prevExpenses * 1.1) {
+      score -= 5;
+      const rise = Math.round((month.expenses / prevExpenses - 1) * 100);
+      insights.push({
+        tone: "warning",
+        title: isBnLang() ? "খরচ গত মাসের চেয়ে বেড়েছে" : "Spending is up from last month",
+        message: isBnLang()
+          ? "এই মাসে আপনি " + money(month.expenses) + " খরচ করেছেন, গত মাসের (" + money(prevExpenses) + ") চেয়ে " + rise + "% বেশি।"
+          : "You have spent " + money(month.expenses) + " this month, " + rise + "% more than last month (" + money(prevExpenses) + ")."
+      });
+    }
+    if (!all.income) { score -= 10; insights.push({ tone: "danger", title: "Add your income", message: "Record income to unlock your savings rate and targets." }); }
+    score = Math.max(0, Math.min(100, score));
+    const target = all.income ? Math.round((all.income * 0.2) / 500) * 500 : null;
+    const trim = function (n) { return Math.max(200, Math.round((Number(n) || 0) * 0.15 / 100) * 100); };
+    const bnTips = isBnLang();
+    const tips = [];
+    breakdown.slice(0, 3).forEach(function (x) {
+      const amt = money(trim(x.value));
+      const advice = (bnTips ? {
+        Food: "সপ্তাহের দিনে বাড়িতে রান্না করুন আর সাপ্তাহিক বাজারের একটা তালিকা বানান — খাবারে প্রায় " + amt + " সাশ্রয় হবে।",
+        Shopping: "Daraz বা Facebook অর্ডারের আগে ৪৮ ঘণ্টার নিয়ম মানুন — impulse কেনাকাটা এড়িয়ে প্রায় " + amt + " সাশ্রয় হবে।",
+        Entertainment: "স্ট্রিমিং সাবস্ক্রিপশন দেখে নিন এবং মাসে দুইবারের বেশি টাকা দিয়ে বের হবেন না — প্রায় " + amt + " সাশ্রয় হবে।",
+        Transport: "একবারে কয়েকটা কাজ সেরে নিন এবং যেখানে সম্ভব মেট্রো/বাস ব্যবহার করুন — প্রায় " + amt + " সাশ্রয় হবে।",
+        Utilities: "অপ্রয়োজনীয় লাইট আর ফ্যান বন্ধ করুন, ইন্টারনেট ও মোবাইল প্যাকেজ তুলনা করুন — বিল প্রায় " + amt + " কমতে পারে।",
+        Health: "বিশ্বস্ত ফার্মাসিতে মাসিক প্যাকে ওষুধ কিনুন, কিন্তু জরুরি স্বাস্থ্য খরচ কখনো কমাবেন না।",
+        Education: "টাকা দিয়ে নতুন কোর্স কেনার আগে 10 Minute School বা YouTube-এ ফ্রি কোর্স দেখুন।",
+      } : {
+        Food: "Cook at home on weekdays and plan one weekly bazar list — save about " + amt + " on food.",
+        Shopping: "Use a 48-hour rule before Daraz or Facebook orders — skipping impulse buys can save about " + amt + ".",
+        Entertainment: "Review streaming subscriptions and limit paid outings to twice a month to save about " + amt + ".",
+        Transport: "Combine errands and use metro rail or bus instead of ride-sharing where you can — about " + amt + " saved.",
+        Utilities: "Switch off unused lights and fans, and compare internet and mobile packages — bills could drop by about " + amt + ".",
+        Health: "Buy regular medicines in monthly packs from a trusted pharmacy, but never cut necessary health spending.",
+        Education: "Look for free courses on 10 Minute School or YouTube before paying for new ones.",
+      })[x.category];
+      if (advice && tips.length < 2) tips.push(advice);
+    });
+    if (bnTips) {
+      tips.push(target
+        ? "সর্বপ্রথম নিজের জন্য আলাদা করুন: বেতনের দিনেই " + money(target) + " সঞ্চয়ে জমা করুন, খরচ করার আগে।"
+        : "সর্বপ্রথম নিজের জন্য আলাদা করুন: আয় আসামাত্রই একটা নির্দিষ্ট অঙ্ক সঞ্চয়ে রাখুন।");
+      if (tips.length < 3) tips.push("তিন মাসের খরচের একটা জরুরি তহবিল গড়ে তুলুন — প্রায় " + money(Math.round(Math.max(month.expenses, prevExpenses) * 3 / 1000) * 1000 || 100000) + "।");
+    } else {
+      tips.push(target ? "Pay yourself first: move " + money(target) + " to savings on salary day, before spending anything." : "Pay yourself first: move a fixed amount to savings as soon as income arrives.");
+      if (tips.length < 3) tips.push("Build an emergency fund of three months' expenses — about " + money(Math.round(Math.max(month.expenses, prevExpenses) * 3 / 1000) * 1000 || 100000) + ".");
+    }
+    return {
+      score: score,
+      scoreLabel: score >= 80 ? "Excellent" : score >= 60 ? "Good" : score >= 40 ? "Fair" : "Needs attention",
+      target: target,
+      avgIncome: avgIncome,
+      prevExpenses: prevExpenses,
+      tips: tips.slice(0, 3),
+      insights: insights,
+    };
+  }
+
+  /* ---------- persistence & seed ---------- */
+  function seed() {
+    const txs = [];
+    function dayAgoMonth(m, day) {
+      const now = new Date();
+      let d = new Date(now.getFullYear(), now.getMonth() - m, 1);
+      let dd = day;
+      if (m === 0) dd = Math.min(day, now.getDate());
+      return dateStr(new Date(d.getFullYear(), d.getMonth(), Math.min(dd, new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate())));
+    }
+    function add(type, amount, category, note, date) { txs.push({ id: uid(), type: type, amount: amount, category: category, note: note, date: date }); }
+    for (let m = 5; m >= 0; m--) {
+      add("income", 85000, "Salary", "Monthly salary", dayAgoMonth(m, 1));
+      add("expense", 22000, "Rent", "House rent", dayAgoMonth(m, 3));
+      add("expense", m === 0 ? 9800 : 7200 + m * 350, "Food", "Groceries & meals", dayAgoMonth(m, 8));
+      add("expense", 3200, "Transport", "Daily commute", dayAgoMonth(m, 12));
+      add("expense", 2600, "Utilities", "Electricity & internet", dayAgoMonth(m, 15));
+      add("savings", 12000, "Emergency Fund", "Monthly contribution", dayAgoMonth(m, 18));
+      if (m % 2 === 0) add("income", 12000, "Freelance", "Side project", dayAgoMonth(m, 21));
+      else add("expense", 5400, "Shopping", "Personal items", dayAgoMonth(m, 20));
+    }
+    return {
+      transactions: txs,
+      budgets: [
+        { id: uid(), category: "Food", limit: 12000 },
+        { id: uid(), category: "Rent", limit: 25000 },
+        { id: uid(), category: "Transport", limit: 5000 },
+        { id: uid(), category: "Utilities", limit: 5000 },
+        { id: uid(), category: "Shopping", limit: 8000 },
+      ],
+      goals: [
+        { id: uid(), name: "Emergency Fund", target: 360000, saved: 96000, targetDate: dateStr(new Date(new Date().getFullYear(), new Date().getMonth() + 6, 1)) },
+        { id: uid(), name: "New Laptop", target: 120000, saved: 30000, targetDate: dateStr(new Date(new Date().getFullYear(), new Date().getMonth() + 10, 1)) },
+      ],
+      prefs: { currency: "BDT", name: "Rahim Ahmed", overallBudget: 60000, theme: "dark" },
+    };
+  }
+  function emptyState() {
+    return { transactions: [], budgets: [], goals: [], prefs: { currency: "BDT", name: "User", overallBudget: 0, theme: "dark" } };
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return emptyState();
+      const d = JSON.parse(raw);
+      if (!d || !Array.isArray(d.transactions) || !Array.isArray(d.budgets)) return seed();
+      d.prefs = d.prefs || { currency: "BDT", name: "User", overallBudget: 0, theme: "dark" };
+      if (!d.prefs.theme || (d.prefs.theme !== "dark" && d.prefs.theme !== "light")) d.prefs.theme = "dark";
+      d.goals = Array.isArray(d.goals) ? d.goals : [];
+      return d;
+    } catch (e) { return seed(); }
+  }
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+    catch (e) { toast("Could not save data", "error"); }
+  }
+  function applyTheme() {
+    const theme = (state && state.prefs && state.prefs.theme) === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+    const meta = $('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "light" ? "#f4f8f6" : "#071511");
+  }
+
+  let state = load();
+  const ui = { route: "dashboard", search: "", type: "all", draft: null, chat: [], range: "6" };
+
+  /* ---------- toast ---------- */
+  function toast(msg, kind) {
+    const root = $("#toast-root");
+    const el = document.createElement("div");
+    el.className = "toast " + (kind || "success");
+    el.textContent = msg;
+    root.appendChild(el);
+    setTimeout(function () { el.style.opacity = "0"; el.style.transition = "opacity .3s"; setTimeout(function () { el.remove(); }, 300); }, 3200);
+  }
+
+  /* ---------- charts ---------- */
+  function barChart(series) {
+    const W = 720, H = 240, pl = 52, pr = 14, pt = 14, pb = 34;
+    const iw = W - pl - pr, ih = H - pt - pb;
+    const peak = Math.max(1, series.reduce(function (m, s) { return Math.max(m, s.income, s.expenses); }, 0));
+    const nice = Math.max(50000, Math.ceil(peak / 50000) * 50000);
+    const step = iw / Math.max(1, series.length);
+    const bw = Math.min(22, step * 0.28);
+    let grid = "";
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (f) {
+      const y = pt + ih - f * ih;
+      grid += '<line x1="' + pl + '" y1="' + y + '" x2="' + (W - pr) + '" y2="' + y + '" stroke="var(--border-soft)"/>' +
+        '<text x="' + (pl - 8) + '" y="' + (y + 4) + '" text-anchor="end" fill="var(--faint)" font-size="10">' + compact(nice * f) + "</text>";
+    });
+    let bars = "";
+    series.forEach(function (s, i) {
+      const gx = pl + i * step + step / 2;
+      const hi = (s.income / nice) * ih, he = (s.expenses / nice) * ih;
+      bars += '<rect x="' + (gx - bw - 2) + '" y="' + (pt + ih - hi) + '" width="' + bw + '" height="' + Math.max(hi, 1) + '" rx="3" fill="var(--success)" opacity=".92"><title>' + s.key + " income: " + money(s.income) + "</title></rect>" +
+        '<rect x="' + (gx + 2) + '" y="' + (pt + ih - he) + '" width="' + bw + '" height="' + Math.max(he, 1) + '" rx="3" fill="var(--danger)" opacity=".92"><title>' + s.key + " expense: " + money(s.expenses) + "</title></rect>" +
+        '<text x="' + gx + '" y="' + (H - 10) + '" text-anchor="middle" fill="var(--muted)" font-size="11">' + s.label + "</text>";
+    });
+    return '<div class="chart-wrap"><svg viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="xMidYMid meet">' + grid + bars + '</svg></div>' +
+      '<div class="chart-legend"><span><i class="legend-dot" style="background:var(--success)"></i>Income</span><span><i class="legend-dot" style="background:var(--danger)"></i>Expenses</span></div>';
+  }
+  function donut(data) {
+    const total = data.reduce(function (s, x) { return s + x.value; }, 0);
+    const r = 76, c = 2 * Math.PI * r, sw = 22;
+    let offset = 0, arcs = "";
+    data.forEach(function (item, i) {
+      const len = total ? (item.value / total) * c : 0;
+      arcs += '<circle cx="105" cy="105" r="' + r + '" fill="none" stroke="' + COLORS[i % COLORS.length] + '" stroke-width="' + sw +
+        '" stroke-dasharray="' + Math.max(0, len - 2.5) + " " + (c - Math.max(0, len - 2.5)) + '" stroke-dashoffset="' + (-offset) +
+        '" transform="rotate(-90 105 105)"><title>' + esc(item.category) + ": " + money(item.value) + "</title></circle>";
+      offset += len;
+    });
+    return '<svg viewBox="0 0 210 210"><circle cx="105" cy="105" r="' + r + '" fill="none" stroke="var(--panel-3)" stroke-width="' + sw + '"/>' + arcs + "</svg>";
+  }
+  function lineChart(points) {
+    const W = 720, H = 230, pl = 54, pr = 16, pt = 16, pb = 34;
+    const iw = W - pl - pr, ih = H - pt - pb;
+    const max = Math.max(1, points.reduce(function (m, p) { return Math.max(m, p.value); }, 0));
+    const min = Math.min(0, points.reduce(function (m, p) { return Math.min(m, p.value); }, 0));
+    const range = Math.max(1, max - min);
+    let running = 0;
+    const vals = points.map(function (p) { running += p.value; return running; });
+    const lo = Math.min(0, Math.min.apply(null, vals)), hi = Math.max(1, Math.max.apply(null, vals));
+    const span = Math.max(1, hi - lo);
+    const xy = vals.map(function (v, i) {
+      const x = pl + (points.length === 1 ? iw / 2 : (i / (points.length - 1)) * iw);
+      const y = pt + ih - ((v - lo) / span) * ih;
+      return { x: x, y: y, v: v, label: points[i].label };
+    });
+    let grid = "";
+    [0, 0.5, 1].forEach(function (f) {
+      const y = pt + ih - f * ih;
+      grid += '<line x1="' + pl + '" y1="' + y + '" x2="' + (W - pr) + '" y2="' + y + '" stroke="var(--border-soft)"/>' +
+        '<text x="' + (pl - 8) + '" y="' + (y + 4) + '" text-anchor="end" fill="var(--faint)" font-size="10">' + compact(lo + f * span) + "</text>";
+    });
+    const path = xy.map(function (p, i) { return (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1); }).join(" ");
+    const area = path + " L" + (xy.length ? xy[xy.length - 1].x : pl) + " " + (pt + ih) + " L" + pl + " " + (pt + ih) + " Z";
+    const dots = xy.map(function (p) { return '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3" fill="var(--primary)"><title>' + esc(p.label) + ": " + money(p.v) + "</title></circle>"; }).join("");
+    const labels = xy.map(function (p) { return '<text x="' + p.x.toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle" fill="var(--muted)" font-size="11">' + esc(p.label) + "</text>"; }).join("");
+    return '<div class="chart-wrap"><svg viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="xMidYMid meet">' + grid +
+      '<path d="' + area + '" fill="var(--primary)" opacity=".10"/><path d="' + path + '" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linejoin="round"/>' + dots + labels + "</svg></div>";
+  }
+  function weeklyChart(weeks) {
+    const peak = Math.max(1, weeks.reduce(function (m, w) { return Math.max(m, w.spend); }, 0));
+    const nice = Math.max(10000, Math.ceil(peak / 10000) * 10000);
+    return '<div class="week-chart">' + weeks.map(function (w) {
+      return '<div class="week-col" title="' + esc(w.label) + ": " + money(w.spend) + '"><div class="week-bar"><i style="height:' + Math.max(2, (w.spend / nice) * 100) + '%"></i></div><small>' + esc(w.label) + "</small></div>";
+    }).join("") + "</div>";
+  }
+
+  /* ---------- shared UI pieces ---------- */
+  function statCard(label, value, iconName, hint, tone, featured) {
+    return '<div class="stat' + (featured ? " featured" : "") + (tone ? " tone-" + tone : "") + '">' +
+      '<div class="stat-top"><span class="stat-label">' + label + '</span><span class="stat-icon">' + icon(iconName) + "</span></div>" +
+      '<div class="stat-value">' + value + '</div><div class="stat-hint">' + hint + "</div></div>";
+  }
+  function card(title, desc, body, action, extraClass) {
+    return '<section class="card ' + (extraClass || "") + '"><div class="card-head"><div><h3 class="card-title">' + title + "</h3>" +
+      (desc ? '<p class="card-desc">' + desc + "</p>" : "") + "</div>" + (action || "") + '</div><div class="card-body">' + body + "</div></section>";
+  }
+  function empty(iconName, title, text, button) {
+    return '<div class="empty"><div class="empty-icon">' + icon(iconName) + "</div><h4>" + title + "</h4>" + (text ? "<p>" + text + "</p>" : "") + (button || "") + "</div>";
+  }
+  function statusClass(s) { return s === "over" ? "over" : s === "warn" ? "warn" : "good"; }
+  function txRow(t, showActions) {
+    const sym = { income: "up", expense: "down", savings: "piggy" }[t.type] || "receipt";
+    const sign = t.type === "income" ? "+" : "−";
+    return '<div class="tx-row"><div class="tx-icon ' + t.type + '">' + icon(sym) + '</div>' +
+      '<div class="tx-main"><div class="tx-title">' + esc(t.note || t.category) + '</div><div class="tx-meta">' + esc(t.category) + " · " + prettyDate(t.date) + "</div></div>" +
+      '<div class="tx-amount amount-' + t.type + '">' + sign + money(t.amount) + "</div>" +
+      (showActions ? '<div class="row-actions"><button class="icon-btn" title="Edit" data-action="edit-tx" data-id="' + t.id + '">' + icon("edit") + '</button><button class="icon-btn" title="Delete" data-action="delete-tx" data-id="' + t.id + '">' + icon("trash") + "</button></div>" : "") +
+      "</div>";
+  }
+
+  function txTableRow(t) {
+    const sym = { income: "up", expense: "down", savings: "piggy" }[t.type] || "receipt";
+    const sign = t.type === "income" ? "+" : "−";
+    return '<tr><td><div class="tx-icon ' + t.type + '" style="display:inline-grid;vertical-align:middle;margin-right:9px">' + icon(sym) + '</div>' +
+      '<span class="tx-title">' + esc(t.note || t.category) + '</span></td>' +
+      '<td class="muted">' + prettyDate(t.date) + "</td><td>" + esc(t.category) + "</td>" +
+      '<td style="text-align:right" class="tx-amount amount-' + t.type + '">' + sign + money(t.amount) + "</td>" +
+      '<td style="text-align:right"><div class="row-actions" style="opacity:1;justify-content:flex-end">' +
+      '<button class="icon-btn" title="Edit" data-action="edit-tx" data-id="' + t.id + '">' + icon("edit") + "</button>" +
+      '<button class="icon-btn" title="Delete" data-action="delete-tx" data-id="' + t.id + '">' + icon("trash") + "</button></div></td></tr>";
+  }
+
+  /* ---------- views ---------- */
+  function viewDashboard() {
+    const d = state, key = currentKey();
+    const all = totals(d.transactions);
+    const month = totals(inMonth(d.transactions, key));
+    const series = monthlySeries(d.transactions, monthKeysBack(6));
+    const breakdown = categoryBreakdown(inMonth(d.transactions, key));
+    const usage = budgetUsage(d.transactions, d.budgets, key, d.prefs.overallBudget);
+    const recent = d.transactions.slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); }).slice(0, 5);
+    const report = buildReport(d);
+
+    let budgetBody = "";
+    if (usage.overall || usage.categories.length) {
+      if (usage.overall) {
+        budgetBody += '<div class="summary-box"><div class="budget-top"><b>Total budget</b><small class="' + (usage.overall.status === "over" ? "text-danger" : "") + '">' + Math.round(usage.overall.pct) + "%</small></div>" +
+          '<div class="progress ' + statusClass(usage.overall.status) + '"><i style="width:' + Math.min(100, usage.overall.pct) + '%"></i></div>' +
+          '<div class="budget-top" style="margin:9px 0 0"><small>' + money(usage.overall.spent) + " of " + money(usage.overall.limit) + " · " +
+          (usage.overall.spent <= usage.overall.limit ? money(usage.overall.limit - usage.overall.spent) + " left" : money(usage.overall.spent - usage.overall.limit) + " over") + "</small></div></div>";
+      }
+      usage.categories.slice(0, 4).forEach(function (l) {
+        budgetBody += '<div class="budget-row"><div class="budget-top"><span>' + esc(l.category) + '</span><small>' + money(l.spent) + " / " + money(l.limit) + " · " + Math.round(l.pct) + "%</small></div>" +
+          '<div class="progress ' + statusClass(l.status) + '"><i style="width:' + Math.min(100, l.pct) + '%"></i></div></div>';
+      });
+    } else {
+      budgetBody = empty("target", "No budgets set", "Create a budget to keep spending in check.", '<button class="btn btn-primary btn-sm" data-action="go" data-route="budgets">Set a budget</button>');
+    }
+
+    let catBody = "";
+    if (breakdown.length) {
+      catBody = '<div class="donut-layout"><div class="donut-wrap">' + donut(breakdown) +
+        '<div class="donut-center"><small>Spent</small><b>' + money(month.expenses) + "</b></div></div><div class=\"cat-list\">" +
+        breakdown.slice(0, 5).map(function (x, i) {
+          const pct = month.expenses ? (x.value / month.expenses) * 100 : 0;
+          return '<div class="cat-item"><i class="legend-dot" style="background:' + COLORS[i % COLORS.length] + '"></i><span>' + esc(x.category) + '</span><b class="tabular">' + money(x.value) + '</b><span class="bar"><i style="width:' + pct + "%;background:" + COLORS[i % COLORS.length] + '"></i></span></div>';
+        }).join("") + "</div></div>";
+    } else {
+      catBody = empty("pie", "No expenses this month", "Expenses you add will be grouped by category here.");
+    }
+
+    return '<div class="page-greeting"><h2>Welcome back, ' + esc(state.prefs.name || "there") + '!</h2><p>Here\'s your financial overview.</p></div>' +
+      '<div class="grid stats-grid">' +
+      statCard("Total Balance", money(all.balance), "wallet", money(month.balance, { signed: true }) + " this month", "", true) +
+      statCard("Total Income", money(all.income), "up", money(month.income) + " in " + monthLabel(key, "short"), "income") +
+      statCard("Total Expenses", money(all.expenses), "down", money(month.expenses) + " in " + monthLabel(key, "short"), "expense") +
+      statCard("Total Savings", money(all.savings), "piggy", all.income ? Math.round(all.savingsRate * 100) + "% of all income saved" : "Add income to see your savings rate", "info") +
+      "</div>" +
+      '<div class="grid grid-3">' +
+      card("Income vs Expense", "Last 6 months", d.transactions.length ? barChart(series) : empty("landmark", "No transactions yet", "Add your first income or expense to see the chart.")) +
+      card("Spending by category", monthLabel(key), catBody) +
+      "</div>" +
+      '<div class="grid grid-3" style="margin-top:18px">' +
+      card("Recent transactions", "Your latest activity", recent.length ? '<div class="tx-list">' + recent.map(function (t) { return txRow(t, false); }).join("") + "</div>" : empty("receipt", "Nothing recorded yet", "Add your first transaction to get started.", '<button class="btn btn-primary btn-sm" data-action="quick-add">' + icon("plus") + " Add transaction</button>"), '<button class="btn btn-ghost btn-sm" data-action="go" data-route="transactions">View all</button>') +
+      '<div class="grid" style="gap:18px">' +
+      card("Monthly budget", monthLabel(key), budgetBody, '<button class="btn btn-ghost btn-sm" data-action="go" data-route="budgets">Manage</button>') +
+      card("AI savings insights", "Rule-based analysis", '<div class="score-hero"><div class="score-badge" style="background:' + (report.score >= 60 ? "var(--success)" : report.score >= 40 ? "var(--warning)" : "var(--danger)") + '">' + report.score + '</div><div><h4>Savings score: ' + report.scoreLabel + "</h4><p>" + (report.target ? "Suggested target: " + money(report.target) + "/month" : "Add income to get a target") + '</p></div></div><ul class="insights">' +
+        report.insights.slice(0, 3).map(function (i) {
+          const color = i.tone === "positive" ? "var(--success)" : i.tone === "warning" ? "var(--warning)" : i.tone === "danger" ? "var(--danger)" : "var(--info)";
+          return '<li class="insight"><span class="dot" style="background:' + color + '"></span><span><b>' + esc(i.title) + ".</b> <span>" + esc(i.message) + "</span></span></li>";
+        }).join("") + '</ul><button class="btn btn-outline btn-block" style="margin-top:16px" data-action="go" data-route="assistant">' + icon("sparkles") + " Ask the savings assistant</button>") +
+      "</div></div>";
+  }
+
+  function renderTxTable() {
+    const body = $("#tx-body");
+    if (!body) return;
+    let rows = state.transactions.slice();
+    if (ui.type !== "all") rows = rows.filter(function (x) { return x.type === ui.type; });
+    if (ui.search) {
+      const q = ui.search.toLowerCase();
+      rows = rows.filter(function (x) { return (x.note + " " + x.category + " " + x.type + " " + x.date).toLowerCase().indexOf(q) >= 0; });
+    }
+    rows.sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+    body.innerHTML = rows.length ? rows.map(function (t) { return txTableRow(t); }).join("") :
+      '<tr><td colspan="5">' + empty("search", "No matching transactions", "Try a different search or filter.") + "</td></tr>";
+    const count = $("#tx-count");
+    if (count) count.textContent = rows.length + " record" + (rows.length === 1 ? "" : "s");
+  }
+  function viewTransactions() {
+    const t = totals(state.transactions);
+    return '<div class="grid stats-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">' +
+      statCard("Money In", money(t.income), "up", "All time", "income") +
+      statCard("Money Out", money(t.expenses), "down", "All time", "expense") +
+      statCard("Saved", money(t.savings), "piggy", "All time", "info") + "</div>" +
+      card("All transactions", "", '<div class="toolbar"><div class="search">' + icon("search") + '<input id="tx-search" class="input" placeholder="Search by note, category or date…" value="' + esc(ui.search) + '"/></div>' +
+        '<div class="chips">' + ["all", "income", "expense", "savings"].map(function (k) {
+          return '<button class="chip' + (ui.type === k ? " active" : "") + '" data-action="filter-type" data-type="' + k + '">' + (k === "all" ? "All" : k.charAt(0).toUpperCase() + k.slice(1)) + "</button>";
+        }).join("") + '</div><button class="btn btn-primary" data-action="quick-add">' + icon("plus") + " Add new</button></div>" +
+        '<div class="muted tiny" id="tx-count" style="margin-bottom:6px"></div>' +
+        '<div style="overflow-x:auto"><table class="table"><thead><tr><th>Details</th><th>Date</th><th>Category</th><th style="text-align:right">Amount</th><th></th></tr></thead><tbody id="tx-body"></tbody></table></div>');
+  }
+
+  function viewBudgets() {
+    const key = currentKey();
+    const usage = budgetUsage(state.transactions, state.budgets, key, state.prefs.overallBudget);
+    let body = "";
+    if (usage.overall) {
+      body += '<div class="summary-box"><div class="budget-top"><b>Overall monthly limit</b><small class="' + (usage.overall.status === "over" ? "text-danger" : "") + '">' + Math.round(usage.overall.pct) + "% used</small></div>" +
+        '<div class="progress ' + statusClass(usage.overall.status) + '"><i style="width:' + Math.min(100, usage.overall.pct) + '%"></i></div>' +
+        '<div class="budget-top" style="margin:9px 0 0"><small>' + money(usage.overall.spent) + " spent of " + money(usage.overall.limit) + " · " +
+        (usage.overall.spent <= usage.overall.limit ? money(usage.overall.limit - usage.overall.spent) + " remaining" : money(usage.overall.spent - usage.overall.limit) + " over budget") + "</small></div></div>";
+    }
+    if (usage.categories.length) {
+      body += usage.categories.map(function (l) {
+        return '<div class="budget-row"><div class="budget-top"><div><b>' + esc(l.category) + '</b> <span class="tag">' + Math.round(l.pct) + "%</span></div><div>" +
+          '<small>' + money(l.spent) + " / " + money(l.limit) + '</small> <button class="icon-btn" style="width:26px;height:26px;display:inline-grid" data-action="edit-budget" data-id="' + l.id + '">' + icon("edit") + '</button> <button class="icon-btn" style="width:26px;height:26px;display:inline-grid" data-action="delete-budget" data-id="' + l.id + '">' + icon("trash") + "</button></div></div>" +
+          '<div class="progress ' + statusClass(l.status) + '"><i style="width:' + Math.min(100, l.pct) + '%"></i></div></div>';
+      }).join("");
+    } else {
+      body += empty("target", "No category budgets yet", "Add one below to start tracking categories.");
+    }
+    const opts = CATEGORIES.expense.map(function (c) { return '<option value="' + c + '">' + c + "</option>"; }).join("");
+    const form = '<form data-form="budget" class="field-row" style="align-items:end">' +
+      '<div class="field"><label>Category</label><select class="input" name="category">' + opts + "</select></div>" +
+      '<div class="field"><label>Monthly limit (' + (SYMBOLS[state.prefs.currency] || "৳") + ')</label><input class="input" name="limit" type="number" min="1" step="any" placeholder="10000" required/></div>' +
+      '<button class="btn btn-primary" type="submit">' + icon("plus") + " Add budget</button></form>";
+    return "<div class=\"grid\" style=\"gap:18px\">" +
+      card("Monthly budgets", monthLabel(key), body) +
+      card("Add a budget", "Set a monthly spending limit for a category", form) +
+      card("Overall limit", "A single cap for all expenses this month", '<form data-form="overall" class="field-row" style="align-items:end"><div class="field"><label>Total monthly limit</label><input class="input" name="overall" type="number" min="0" step="any" value="' + (state.prefs.overallBudget || "") + '" placeholder="e.g. 60000"/></div><button class="btn btn-outline" type="submit">Save limit</button></form>') +
+      "</div>";
+  }
+
+  function viewAnalytics() {
+    const keys = monthKeysForRange(state.transactions, ui.range);
+    const txs = state.transactions.filter(function (x) { return keys.indexOf(monthOf(x.date)) >= 0; });
+    const series = monthlySeries(txs, keys);
+    const breakdown = categoryBreakdown(txs);
+    const t = totals(txs);
+    const active = series.filter(function (s) { return s.income || s.expenses; }).length || 1;
+    const bestMonth = series.reduce(function (b, s) { return !b || s.savings > b.savings ? s : b; }, null);
+    const best = bestMonth && bestMonth.savings > 0 ? bestMonth : null;
+    const top = breakdown[0];
+    const ranges = [["3", "3 months"], ["6", "6 months"], ["12", "12 months"], ["all", "All time"]];
+    const tabs = '<div class="range-tabs">' + ranges.map(function (r) {
+      return '<button class="' + (ui.range === r[0] ? "active" : "") + '" data-action="set-range" data-range="' + r[0] + '">' + r[1] + "</button>";
+    }).join("") + "</div>";
+    if (!txs.length) {
+      return card("Analytics", "Charts built from your real transactions",
+        empty("analytics", "Not enough data for this period", "Add some income and expenses, or choose a longer date range.", '<button class="btn btn-primary btn-sm" data-action="quick-add">' + icon("plus") + " Add transaction</button>"), tabs);
+    }
+    let catBody = "";
+    if (breakdown.length) {
+      catBody = '<div class="donut-layout"><div class="donut-wrap">' + donut(breakdown) +
+        '<div class="donut-center"><small>Spent</small><b>' + money(t.expenses) + "</b></div></div><div class=\"cat-list\">" +
+        breakdown.slice(0, 5).map(function (x, i) {
+          const pct = t.expenses ? (x.value / t.expenses) * 100 : 0;
+          return '<div class="cat-item"><i class="legend-dot" style="background:' + COLORS[i % COLORS.length] + '"></i><span>' + esc(x.category) + '</span><b class="tabular">' + money(x.value) + '</b><span class="bar"><i style="width:' + pct + "%;background:" + COLORS[i % COLORS.length] + '"></i></span></div>';
+        }).join("") + "</div></div>";
+    } else {
+      catBody = empty("pie", "No expenses in this period", "Expenses you add will be grouped by category here.");
+    }
+    const rows = series.slice().reverse().map(function (s) {
+      return '<tr><td><b>' + esc(monthLabel(s.key)) + '</b></td><td class="tabular text-success">' + money(s.income) + '</td><td class="tabular text-danger">' + money(s.expenses) + '</td><td class="tabular' + (s.savings < 0 ? " text-danger" : "") + '">' + money(s.savings) + '</td><td class="tabular muted">' + (s.income ? Math.round(s.rate * 100) + "%" : "—") + "</td></tr>";
+    }).join("");
+    return "<div class=\"grid\" style=\"gap:18px\">" +
+      '<div class="grid stats-grid">' +
+      statCard("Avg. monthly income", money(Math.round(t.income / active)), "up", money(t.income) + " total", "income") +
+      statCard("Avg. monthly expense", money(Math.round(t.expenses / active)), "down", money(t.expenses) + " total", "expense") +
+      statCard("Highest spending", top ? esc(top.category) : "—", "analytics", top ? money(top.value) + " · " + Math.round(top.value / Math.max(1, t.expenses) * 100) + "% of spending" : "No expenses in this period", "warning") +
+      statCard("Best saving month", best ? money(best.savings) : "—", "trophy", best ? esc(monthLabel(best.key)) : "No savings yet", "info") +
+      "</div>" +
+      '<div class="grid grid-3">' +
+      card("Monthly income vs expense", "Last " + keys.length + " months", barChart(series), tabs) +
+      card("Category breakdown", "Share of total expenses", catBody) +
+      "</div>" +
+      '<div class="grid grid-2">' +
+      card("Weekly spending", "Last 8 weeks", weeklyChart(weekBuckets(state.transactions, 8))) +
+      card("Savings trend", "Monthly and cumulative savings", lineChart(series.map(function (s) { return { label: s.label, value: s.savings }; }))) +
+      "</div>" +
+      card("Monthly financial summary", "All amounts in " + state.prefs.currency,
+        '<div style="overflow-x:auto"><table class="table"><thead><tr><th>Month</th><th style="text-align:right">Income</th><th style="text-align:right">Expense</th><th style="text-align:right">Savings</th><th style="text-align:right">Savings rate</th></tr></thead><tbody>' + rows +
+        '</tbody><tfoot><tr><td><b>Total</b></td><td class="tabular text-success">' + money(t.income) + '</td><td class="tabular text-danger">' + money(t.expenses) + '</td><td class="tabular">' + money(t.savings) + '</td><td class="tabular muted">' + (t.income ? Math.round(t.savingsRate * 100) + "%" : "—") + "</td></tr></tfoot></table></div>") +
+      "</div>";
+  }
+
+  function goalMonthsLeft(g) {
+    if (!g.targetDate) return 1;
+    const p = String(g.targetDate).split("-"), d = new Date(Number(p[0]), Number(p[1]) - 1, 1), now = new Date();
+    return Math.max(1, (d.getFullYear() - now.getFullYear()) * 12 + (d.getMonth() - now.getMonth()) + 1);
+  }
+  function goalCard(g) {
+    const target = Number(g.target) || 0, saved = Number(g.saved) || 0;
+    const pct = target ? (saved / target) * 100 : 0;
+    const left = Math.max(0, target - saved);
+    const reached = saved >= target && target > 0;
+    const passed = g.targetDate && g.targetDate < todayStr() && !reached;
+    const monthly = Math.round(left / goalMonthsLeft(g) / 100) * 100;
+    const status = reached ? "Goal reached 🎉" : passed ? "Passed" : money(monthly);
+    return '<div class="goal-card">' +
+      '<div class="goal-head"><div class="goal-title"><span class="goal-icon ' + (reached ? "done" : "") + '">' + icon(reached ? "check" : "goal") + '</span><div><h4>' + esc(g.name) + '</h4>' +
+      (g.targetDate ? '<small>' + icon("calendar") + " " + esc(prettyDate(g.targetDate)) + "</small>" : "<small>No target date</small>") + "</div></div>" +
+      '<div class="row-actions" style="opacity:1"><button class="icon-btn" title="Edit goal" data-action="edit-goal" data-id="' + g.id + '">' + icon("edit") + '</button><button class="icon-btn" title="Delete goal" data-action="delete-goal" data-id="' + g.id + '">' + icon("trash") + "</button></div></div>" +
+      '<div class="goal-amount"><b>' + money(saved) + '</b><span class="text-info">' + Math.min(100, Math.round(pct)) + "%</span></div>" +
+      '<div class="goal-sub">' + (isBnLang() ? "মোট " : "of ") + money(target) + '</div><div class="progress ' + (reached ? "good" : "") + '"><i style="width:' + Math.min(100, pct) + '%"></i></div>' +
+      '<div class="goal-foot"><div><small>Remaining</small><b>' + money(left) + '</b></div><div><small>' + (reached ? "Status" : passed ? "Deadline" : "Save monthly") + '</small><b class="' + (reached ? "text-success" : passed ? "text-danger" : "") + '">' + status + "</b></div></div></div>";
+  }
+  function viewGoals() {
+    const goals = state.goals || [];
+    const target = goals.reduce(function (s, g) { return s + (Number(g.target) || 0); }, 0);
+    const saved = goals.reduce(function (s, g) { return s + Math.min(Number(g.saved) || 0, Number(g.target) || 0); }, 0);
+    const done = goals.filter(function (g) { return (Number(g.saved) || 0) >= (Number(g.target) || 0) && (Number(g.target) || 0) > 0; }).length;
+    const addBtn = '<button class="btn btn-primary btn-sm" data-action="new-goal">' + icon("plus") + " New goal</button>";
+    if (!goals.length) {
+      return card("Savings Goals", "Save towards the things that matter to you",
+        empty("goal", "No savings goals yet", "Try a laptop, a new phone or an emergency fund.", '<button class="btn btn-primary btn-sm" data-action="new-goal">' + icon("plus") + " Create a goal</button>"), addBtn);
+    }
+    return "<div class=\"grid\" style=\"gap:18px\">" +
+      '<div class="grid stats-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">' +
+      statCard("Total saved", money(saved), "piggy", target
+        ? (isBnLang() ? Math.round(saved / target * 100) + "% সব লক্ষ্যের" : Math.round(saved / target * 100) + "% of all goals")
+        : "No target set", "", true) +
+      statCard("Still needed", money(Math.max(0, target - saved)), "goal", "Across all goals", "info") +
+      statCard("Completed", done + " / " + goals.length, "trophy", "Goals reached", "income") +
+      "</div>" +
+      card("Savings Goals", "Save towards what matters to you", '<div class="goal-grid">' + goals.map(goalCard).join("") + "</div>", addBtn) +
+      "</div>";
+  }
+
+  function assistantAnswer(q) {
+    const s = String(q).toLowerCase();
+    const d = state, key = currentKey();
+    const all = totals(d.transactions), month = totals(inMonth(d.transactions, key));
+    const bd = categoryBreakdown(inMonth(d.transactions, key));
+    const usage = budgetUsage(d.transactions, d.budgets, key, d.prefs.overallBudget);
+    const report = buildReport(d);
+    const trim = function (n) { return Math.max(200, Math.round((Number(n) || 0) * 0.15 / 100) * 100); };
+    const bn = isBnLang();
+    const kind = function () {
+      if (/monthly plan| savings plan|মাসিক পরিকল্পনা|সঞ্চয় পরিকল্পনা|পরিকল্পনা দিন/.test(s)) return "plan";
+      if (/save more|সঞ্চয় বাড়াই|কীভাবে সঞ্চয়|বেশি সঞ্চয়|save-more/.test(s)) return "save-more";
+      if (/which category|biggest category|top category|costs me the most|সবচেয়ে বড় ক্যাটাগরি|কোথায় খরচ|সবচেয়ে বেশি খরচ/.test(s)) return "top-category";
+      if (/saved this month|how much.*saved|how much.*save|did i save|এই মাসে.*সঞ্চয়|কত সঞ্চয়|সঞ্চয় কত/.test(s)) return "saved-month";
+      if (/savings rate|how am i saving|সঞ্চয়ের হার|আমি কীভাবে সঞ্চয়/.test(s)) return "rate";
+      if (/budget|লিমিট|limit|বাজেট/.test(s)) return "budget";
+      if (/spend|expense|খরচ|cost|category|ক্যাটাগরি/.test(s)) return "spend";
+      if (/income|salary|আয়|বেতন/.test(s)) return "income";
+      if (/balance|ব্যালেন্স/.test(s)) return "balance";
+      if (/hello|hi|hey|নমস্কার|আসসালামুয়ালাইকুম|আসসালামু|assalamualaikum|assalamu/.test(s)) return "hello";
+      return "other";
+    }();
+    if (kind === "plan") {
+      const income = all.income > 0 ? all.income : report.avgIncome;
+      if (!income) return bn
+        ? "প্রথমে মাসিক আয় যোগ করুন, তবেই আমি আপনার জন্য সঞ্চয় পরিকল্পনা বানাতে পারব।"
+        : "Add your monthly income first, then I can build a savings plan around it.";
+      const saveTarget = report.target || Math.round(income * 0.2 / 500) * 500;
+      const needs = Math.round(income * 0.5 / 500) * 500;
+      const wants = Math.max(0, income - needs - saveTarget);
+      const lines = bn ? [
+        "মাসিক আয় " + money(income) + " ধরে, এটা একটা সহজ পরিকল্পনা:",
+        "",
+        "• প্রয়োজন (ভাড়া, বিদ্যুৎ, খাবার, যাতায়াত): " + money(needs) + " — ৫০%",
+        "• সঞ্চয়: " + money(saveTarget) + " — " + Math.round(saveTarget / income * 100) + "%",
+        "• চাহিদা (কেনাকাটা, বাইরে খাওয়া, বিনোদন): " + money(wants) + " — " + Math.round(wants / income * 100) + "%",
+      ] : [
+        "Based on a monthly income of " + money(income) + ", here is a simple plan:",
+        "",
+        "• Needs (rent, bills, food, transport): " + money(needs) + " — 50%",
+        "• Savings: " + money(saveTarget) + " — " + Math.round(saveTarget / income * 100) + "%",
+        "• Wants (shopping, eating out, entertainment): " + money(wants) + " — " + Math.round(wants / income * 100) + "%",
+      ];
+      const open = (d.goals || []).filter(function (g) { return (Number(g.saved) || 0) < (Number(g.target) || 0); });
+      if (open.length) {
+        lines.push("", bn ? "আপনার লক্ষ্যগুলোতে সঞ্চয় ভাগ করে দিন:" : "Split your savings across your goals:");
+        open.slice(0, 3).forEach(function (g) {
+          const months = goalMonthsLeft(g);
+          const per = Math.round((Number(g.target) - Number(g.saved)) / months / 100) * 100;
+          lines.push("• " + g.name + ": " + money(per) + (bn ? "/মাস, " : "/month for ") + months + (bn ? " মাস" : " month" + (months > 1 ? "s" : "")));
+        });
+      }
+      return lines.join("\n");
+    }
+    if (kind === "save-more") {
+      if (!state.transactions.length) return bn
+        ? "এখনো কোনো লেনদেন নেই। আয় আর খরচ যোগ করে আবার জিজ্ঞাসা করুন।"
+        : "I don't have any transactions yet. Add your income and expenses and ask me again.";
+      const lines = [bn ? "এই " + monthLabel(key) + "-এ যা মনে দাঁড়িয়েছে:" : "Here is what stands out in " + monthLabel(key) + ":"];
+      if (month.income > 0) {
+        const rate = Math.round(Math.max(0, month.savingsRate) * 100);
+        lines.push(bn
+          ? "• আপনি আপনার আয়ের " + rate + "% সঞ্চয় করছেন (" + money(month.savings) + ")।"
+          : "• You are saving " + rate + "% of your income (" + money(month.savings) + ").");
+      }
+      if (bd.length) {
+        const cut = money(trim(bd[0].value));
+        lines.push(bn
+          ? "• " + bd[0].category + " আপনার সবচেয়ে বড় খরচ। " + cut + " কমালেই দ্রুত ফল পাবেন।"
+          : "• " + bd[0].category + " is your largest expense. Cutting it by " + cut + " is the quickest win.");
+      }
+      const watch = usage.categories.filter(function (x) { return x.status !== "good"; });
+      if (watch.length) lines.push(bn
+        ? "• এই বাজেটগুলোর দিকে নজর দিন: " + watch.map(function (x) { return x.category + " (" + Math.round(x.pct) + "%)"; }).join(", ") + "।"
+        : "• Watch these budgets: " + watch.map(function (x) { return x.category + " (" + Math.round(x.pct) + "%)"; }).join(", ") + ".");
+      lines.push("", bn ? "এই তিনটি ধাপ চেষ্টা করুন:" : "Try these three steps:");
+      report.tips.forEach(function (tip, i) { lines.push((i + 1) + ". " + tip); });
+      return lines.join("\n");
+    }
+    if (kind === "top-category") {
+      if (!bd.length) return bn
+        ? "আপনি " + monthLabel(key) + "এ এখনো কোনো খরচ রেকর্ড করেননি।"
+        : "You have no expenses recorded for " + monthLabel(key) + " yet.";
+      const share = Math.round(bd[0].value / Math.max(1, month.expenses) * 100);
+      const lines = [
+        bn
+          ? bd[0].category + " এই মাসে আপনার সবচেয়ে বেশি খরচ: " + money(bd[0].value) + " (" + share + "% খরচের)।"
+          : bd[0].category + " costs you the most this month: " + money(bd[0].value) + " (" + share + "% of your spending).",
+        "",
+        bn ? "আপনার প্রধান ক্যাটাগরি:" : "Your top categories:"
+      ];
+      bd.slice(0, 3).forEach(function (x, i) { lines.push((i + 1) + ". " + x.category + " — " + money(x.value) + " (" + Math.round(x.value / Math.max(1, month.expenses) * 100) + "%)"); });
+      const row = usage.categories.filter(function (x) { return x.category === bd[0].category; })[0];
+      if (row) lines.push("", bn
+        ? "আপনার " + bd[0].category + " বাজেট " + Math.round(row.pct) + "% ব্যবহৃত।"
+        : "Your " + bd[0].category + " budget is " + Math.round(row.pct) + "% used.");
+      return lines.join("\n");
+    }
+    if (kind === "saved-month") {
+      const rate = Math.round(month.savingsRate * 100);
+      const lines = bn ? [
+        "এই " + monthLabel(key) + " পর্যন্ত আপনার আয় " + money(month.income) + " এবং খরচ " + money(month.expenses) + "।",
+        month.savings >= 0
+          ? "অর্থাৎ আপনি " + money(month.savings) + (month.income ? " সঞ্চয় করেছেন — আয়ের " + rate + "%।" : " সঞ্চয় করেছেন।")
+          : "অর্থাৎ এই মাসে আপনি " + money(-month.savings) + " কম আছেন।"
+      ] : [
+        "In " + monthLabel(key) + " so far you earned " + money(month.income) + " and spent " + money(month.expenses) + ".",
+        month.savings >= 0 ? "That means you saved " + money(month.savings) + (month.income ? " — " + rate + "% of your income." : ".") : "That means you are " + money(-month.savings) + " short this month."
+      ];
+      if (report.target) {
+        const gap = report.target - month.savings;
+        lines.push(bn
+          ? (gap > 0
+            ? "প্রস্তাবিত লক্ষ্য " + money(report.target) + " পৌঁছাতে আপনার " + money(gap) + " বাকি আছে।"
+            : "আপনি ইতিমধ্যেই প্রস্তাবিত লক্ষ্য " + money(report.target) + " পৌঁছেছেন। দারুণ কাজ!")
+          : (gap > 0
+            ? "You are " + money(gap) + " away from the suggested target of " + money(report.target) + "."
+            : "You have already reached the suggested target of " + money(report.target) + ". Great work!"));
+      }
+      return lines.join("\n");
+    }
+    if (kind === "rate") {
+      const r = all.income ? Math.round(all.savingsRate * 100) : 0;
+      const target = all.income ? money(Math.round(all.income * 0.2 / 500) * 500) : null;
+      return "Your all-time savings rate is " + r + "% of income. A common guideline is 20%." +
+        (target ? " Based on your income, a good monthly target would be around " + target + ". You have saved " + money(all.savings) + " so far." : " Add some income to unlock a personalised target.");
+    }
+    if (kind === "budget") {
+      if (!usage.categories.length && !usage.overall) return "You have not set any budgets yet. Head to the Budgets page to create one.";
+      const over = usage.categories.filter(function (x) { return x.pct >= 100; });
+      if (over.length) return "Warning: " + over.map(function (x) { return x.category + " (" + Math.round(x.pct) + "%)"; }).join(", ") + " exceeded the limit this month.";
+      if (usage.overall) return "You have used " + Math.round(usage.overall.pct) + "% of your overall monthly limit, with " + money(Math.max(0, usage.overall.limit - usage.overall.spent)) + " left.";
+      return "All category budgets are on track this month. Nicely done!";
+    }
+    if (kind === "spend") {
+      if (!bd.length) return "No expenses recorded this month yet.";
+      return "This month you spent " + money(month.expenses) + ". Your biggest category is " + bd[0].category + " at " + money(bd[0].value) + " (" + Math.round(bd[0].value / Math.max(1, month.expenses) * 100) + "% of spending).";
+    }
+    if (kind === "income") return "You have recorded " + money(all.income) + " of total income, including " + money(month.income) + " this month.";
+    if (kind === "balance") return "Your current balance is " + money(all.balance) + " (income minus expenses and savings).";
+    if (kind === "hello") return bn
+      ? "আসসালামুয়ালাইকুম! আমি আপনার আয়, খরচ, বাজেট, সঞ্চয়ের লক্ষ্য ও খরচের অভ্যাস বিশ্লেষণ করতে পারি। সবচেয়ে বড় খরচ, মাসিক সঞ্চয় পরিকল্পনা বা সঞ্চয়ের হার সম্পর্কে জিজ্ঞাসা করুন।"
+      : "Hi! I can analyse your income, expenses, budgets, savings goals and spending habits. Try asking about your biggest expense, a monthly savings plan, or your savings rate.";
+    return bn
+      ? "আমি সঞ্চয়ের হার, বাজেট, খরচের ক্যাটাগরি, আয়, লক্ষ্য ও ব্যালেন্সে সাহায্য করতে পারি। উপরের প্রশ্নগুলোর একটি চেষ্টা করুন।"
+      : "I can help with your savings rate, budgets, spending categories, income, goals and balance. Try one of the suggested questions above.";
+  }
+  function viewAssistant() {
+    const report = buildReport(state);
+    const presets = ["How can I save more money?", "Which category costs me the most?", "How much money did I save this month?", "Give me a monthly savings plan.", "Am I over budget?", "What is my balance?"];
+    return '<div class="grid" style="gap:18px">' +
+      '<div class="grid grid-2">' +
+      card("Your savings health", "Based on your current data", '<div class="score-hero"><div class="score-badge" style="background:' + (report.score >= 60 ? "var(--success)" : report.score >= 40 ? "var(--warning)" : "var(--danger)") + '">' + report.score + '</div><div><h4>' + report.scoreLabel + "</h4><p>" + (report.target ? "Suggested savings target: " + money(report.target) + " per month" : "Add income to unlock a suggested target") + '</p></div></div><ul class="insights">' +
+        report.insights.map(function (i) {
+          const color = i.tone === "positive" ? "var(--success)" : i.tone === "warning" ? "var(--warning)" : i.tone === "danger" ? "var(--danger)" : "var(--info)";
+          return '<li class="insight"><span class="dot" style="background:' + color + '"></span><span><b>' + esc(i.title) + ".</b> <span>" + esc(i.message) + "</span></span></li>";
+        }).join("") + "</ul>") +
+      card("Ask the assistant", "Answers are generated from your own data", '<div id="chat-log" class="chat"></div>' +
+        '<div class="chips" style="margin-top:14px">' + presets.map(function (q) {
+          return '<button class="chip" data-action="chat-preset" data-q="' + esc(q) + '">' + esc(q) + "</button>";
+        }).join("") + '</div><form class="chat-form" data-form="chat"><input class="input" name="q" placeholder="Ask about your money…" autocomplete="off" required/><button class="btn btn-primary" type="submit">' + icon("send") + "</button></form>") +
+      "</div>" +
+      card("Bangladesh savings tips", "Practical ideas from your own numbers — no server, works offline", '<ul class="tip-grid">' +
+        report.tips.map(function (tip, i) {
+          return '<li><span class="tip-num">' + (i + 1) + '</span><span>' + esc(tip) + "</span></li>";
+        }).join("") + "</ul>") +
+      "</div>";
+  }
+  function renderChat() {
+    const log = $("#chat-log");
+    if (!log) return;
+    if (!ui.chat.length) ui.chat.push({ who: "bot", text: "Hi! I am your HisabTrack savings assistant. Ask me anything about your money, or tap a suggested question." });
+    log.innerHTML = ui.chat.map(function (m) { return '<div class="chat-msg ' + m.who + '">' + esc(m.text) + "</div>"; }).join("");
+    log.scrollTop = log.scrollHeight;
+  }
+
+  /* ---------- PIN lock screen ---------- */
+  function lockScreenHTML(mode) {
+    const recovering = mode === "recover";
+    return '<div class="lock-screen"><div class="lock-card">' +
+      '<div class="lock-mark">৳</div><h2>HisabTrack</h2>' +
+      '<p class="lock-sub">' + (recovering ? "Enter your recovery code" : "Enter your PIN to continue") + "</p>" +
+      '<div class="lock-error" id="pin-error"></div>' +
+      '<form data-form="' + (recovering ? "pin-recover" : "pin-unlock") + '">' +
+      '<input id="pin-input" name="' + (recovering ? "code" : "pin") + '" class="input pin-input" type="password" ' +
+      (recovering ? 'maxlength="12" placeholder="Recovery code" autocomplete="off"'
+                  : 'inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" placeholder="••••" autocomplete="current-password"') +
+      ' required/><button class="btn btn-primary btn-block" type="submit" style="margin-top:12px">' +
+      (recovering ? "Reset PIN" : "Unlock") + "</button></form>" +
+      '<button class="lock-link" data-action="' + (recovering ? "pin-back" : "pin-forgot") + '">' +
+      (recovering ? "Back to PIN" : "Forgot PIN?") + "</button></div></div>";
+  }
+  function showLock(mode) {
+    pin.locked = true;
+    pin.recovering = mode === "recover";
+    closeModal();
+    document.body.classList.add("pin-locked");
+    const root = $("#lock-root");
+    if (root) root.innerHTML = lockScreenHTML(pin.recovering ? "recover" : "pin");
+    const input = $("#pin-input");
+    if (input) input.focus();
+  }
+  function hideLock() {
+    pin.locked = false;
+    pin.recovering = false;
+    document.body.classList.remove("pin-locked");
+    const root = $("#lock-root");
+    if (root) root.innerHTML = "";
+    pin.lastActivity = Date.now();
+  }
+  function pinError(msg) {
+    const el = $("#pin-error");
+    if (el) el.textContent = msg;
+    const input = $("#pin-input");
+    if (input) { input.value = ""; input.focus(); }
+    const box = $(".lock-card");
+    if (box) { box.classList.remove("lock-shake"); void box.offsetWidth; box.classList.add("lock-shake"); }
+  }
+  function openRecovery() {
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" style="max-width:400px">' +
+      '<div class="modal-head"><h3>Recovery code</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<div class="modal-body"><p class="muted" style="margin:0">Save this code somewhere safe. If you forget your PIN, enter it on the lock screen to remove the PIN without losing your data.</p>' +
+      '<div class="recovery-code">' + esc(pin.data.recovery) + "</div></div>" +
+      '<div class="modal-foot"><button class="btn btn-primary" data-action="close-modal">I saved it</button></div></div></div>';
+  }
+  function openPinRemove() {
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" style="max-width:400px">' +
+      '<div class="modal-head"><h3>Turn off PIN lock</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<form data-form="pin-disable"><div class="modal-body"><div class="field"><label>Current PIN</label>' +
+      '<input class="input" name="current" type="password" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" required/>' +
+      '<span class="hint">Your transactions and budgets are not affected.</span></div></div>' +
+      '<div class="modal-foot"><button type="button" class="btn btn-outline" data-action="close-modal">Cancel</button>' +
+      '<button type="submit" class="btn btn-danger">Turn off PIN</button></div></form></div></div>';
+  }
+
+  function pinSettingsCard() {
+    const p = pin.data;
+    const opts = [[0, "Off"], [1, "1 minute"], [5, "5 minutes"], [15, "15 minutes"], [30, "30 minutes"]]
+      .map(function (o) { return '<option value="' + o[0] + '"' + (p.autoLock === o[0] ? " selected" : "") + ">" + o[1] + "</option>"; }).join("");
+    return card("PIN lock", "Protect this browser with a 4–6 digit PIN",
+      '<div class="stat-mini"><span>Status</span><b>' + (p.enabled ? "On" : "Off") + "</b></div>" +
+      '<form data-form="pin-settings" class="grid" style="gap:12px;margin-top:12px">' +
+      (p.enabled ? '<div class="field"><label>Current PIN</label><input class="input" name="current" type="password" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" required/></div>' : "") +
+      '<div class="field-row">' +
+      '<div class="field"><label>' + (p.enabled ? "New PIN" : "PIN") + '</label><input class="input" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" placeholder="4–6 digits" ' + (p.enabled ? "" : "required") + "/></div>" +
+      '<div class="field"><label>Confirm PIN</label><input class="input" name="confirm" type="password" inputmode="numeric" pattern="[0-9]{4,6}" maxlength="6" placeholder="Repeat"/></div>' +
+      "</div>" +
+      '<div class="field"><label>Auto-lock after inactivity</label><select class="input" name="autoLock">' + opts + "</select>" +
+      '<span class="hint">Locks the app after this much time without activity. Off means only manual lock.</span></div>' +
+      '<div class="chips"><button class="btn btn-primary btn-sm" type="submit">' + icon("check") + " " + (p.enabled ? "Update PIN lock" : "Enable PIN lock") + "</button>" +
+      (p.enabled ? '<button class="btn btn-outline btn-sm" type="button" data-action="lock-now">' + icon("settings") + " Lock now</button>" +
+        '<button class="btn btn-outline btn-sm" type="button" data-action="show-recovery">Recovery code</button>' +
+        '<button class="btn btn-danger btn-sm" type="button" data-action="pin-remove">Turn off PIN</button>' : "") +
+      "</div></form>" +
+      '<p class="muted tiny" style="margin:12px 0 0">This is a screen lock for this browser only. It does not encrypt your data. Export JSON backups to protect them.</p>');
+  }
+
+  function viewSettings() {
+    const size = 0;
+    try { size = new Blob([localStorage.getItem(STORE_KEY) || ""]).size; } catch (e) {}
+    const curOpts = Object.keys(SYMBOLS).map(function (k) { return '<option value="' + k + '"' + (state.prefs.currency === k ? " selected" : "") + ">" + k + " (" + SYMBOLS[k] + ")</option>"; }).join("");
+    const theme = state.prefs.theme === "light" ? "light" : "dark";
+    const themeCards = '<div class="theme-cards">' +
+      '<button type="button" class="' + (theme === "dark" ? "active" : "") + '" data-action="set-theme" data-theme="dark">' + icon("moon") + "<b>Dark</b><small>Easy on the eyes</small></button>" +
+      '<button type="button" class="' + (theme === "light" ? "active" : "") + '" data-action="set-theme" data-theme="light">' + icon("sun") + "<b>Light</b><small>Bright and clean</small></button></div>";
+    return '<div class="grid grid-2">' +
+      pinSettingsCard() +
+      card("Preferences", "Personalise your HisabTrack", '<form data-form="prefs" class="grid" style="gap:14px">' +
+        '<div class="field"><label>Display name</label><input class="input" name="name" value="' + esc(state.prefs.name) + '"/></div>' +
+        '<div class="field"><label>Currency</label><select class="input" name="currency">' + curOpts + '</select><span class="hint">Amounts are stored as numbers; only the symbol changes.</span></div>' +
+        '<button class="btn btn-primary" type="submit">' + icon("check") + " Save preferences</button></form>") +
+      card("Theme", "Choose how HisabTrack looks", themeCards) +
+      card("Your data", "Everything is stored in this browser", '<div class="stat-mini"><span>Transactions</span><b>' + state.transactions.length + '</b></div>' +
+        '<div class="stat-mini"><span>Budgets</span><b>' + state.budgets.length + '</b></div>' +
+        '<div class="stat-mini"><span>Savings goals</span><b>' + (state.goals || []).length + '</b></div>' +
+        '<div class="stat-mini"><span>Storage used</span><b>' + Math.max(1, Math.round(size / 1024)) + " KB</b></div>" +
+        '<div class="divider"></div><div class="chips"><button class="btn btn-outline btn-sm" data-action="export">' + icon("download") + " Export JSON</button>" +
+        '<button class="btn btn-outline btn-sm" data-action="export-csv">' + icon("download") + " Export CSV</button>" +
+        '<button class="btn btn-outline btn-sm" data-action="import">' + icon("upload") + " Import JSON</button>" +
+        '<button class="btn btn-outline btn-sm" data-action="reset-demo">' + icon("refresh") + " Restore demo data</button>" +
+        '<button class="btn btn-outline btn-sm" data-action="setup-start">' + icon("sparkles") + " Guided setup</button>" +
+        '<button class="btn btn-danger btn-sm" data-action="clear-all">' + icon("trash") + " Clear everything</button></div>" +
+        '<input type="file" id="import-file" accept="application/json,.json" hidden/>') +
+      card("Android app", "Install it on your phone", '<p class="muted" style="margin:0 0 10px">Download the APK file, open it on your Android phone, and allow installation from unknown sources to install HisabTrack as a full-screen app.</p>' +
+        '<div class="chips" style="margin-top:12px"><a class="btn btn-primary btn-sm" href="https://hisabtrack.netlify.app/apk/HisabTrack.apk" download>' + icon("download") + ' Download APK</a>' +
+        '<a class="btn btn-outline btn-sm" href="https://hisabtrack.netlify.app/" target="_blank" rel="noopener">' + icon("info") + ' Open web app</a></div>') +
+      card("About HisabTrack", "", '<p class="muted" style="margin:0 0 10px">HisabTrack is a simple, private finance manager. No account, no server, no tracking — your data never leaves this browser.</p><p class="muted tiny" style="margin:0">Tip: use Export JSON or CSV to back up your data regularly, and Import JSON to restore it on another device.</p>') +
+      "</div>";
+  }
+
+  const VIEWS = { dashboard: viewDashboard, transactions: viewTransactions, budgets: viewBudgets, analytics: viewAnalytics, assistant: viewAssistant, goals: viewGoals, settings: viewSettings };
+
+  /* ---------- shell & router ---------- */
+  function currentRoute() {
+    const h = window.location.hash.replace(/^#\/?/, "").split("?")[0];
+    return ROUTES[h] ? h : "dashboard";
+  }
+  function navItems() {
+    return ["dashboard", "transactions", "budgets", "analytics", "assistant", "goals", "settings"].map(function (k) {
+      return '<button class="nav-item' + (ui.route === k ? " active" : "") + '" data-action="go" data-route="' + k + '">' + icon(ROUTES[k].icon) + "<span>" + ROUTES[k].title + "</span></button>";
+    }).join("");
+  }
+  function shell() {
+    const r = ROUTES[ui.route];
+    const theme = state.prefs.theme === "light" ? "light" : "dark";
+    const initials = String(state.prefs.name || "U").trim().split(/\s+/).map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase();
+    const themeSwitch = '<div class="theme-switch" role="group" aria-label="Theme">' +
+      '<button type="button" class="' + (theme === "dark" ? "active" : "") + '" data-action="set-theme" data-theme="dark" title="Dark theme">' + icon("moon") + "</button>" +
+      '<button type="button" class="' + (theme === "light" ? "active" : "") + '" data-action="set-theme" data-theme="light" title="Light theme">' + icon("sun") + "</button></div>";
+    const mobile = [
+      ["dashboard", "Home"], ["transactions", "Txns"], ["budgets", "Budgets"], ["analytics", "Charts"], ["assistant", "AI"], ["goals", "Goals"],
+    ];
+    return '<div class="app">' +
+      '<aside class="sidebar"><div class="brand"><div class="brand-mark">৳</div><div><div class="brand-name">Hisab<span>Track</span></div><div class="brand-tag">Track your money. Control your future.</div></div></div>' +
+      '<nav class="nav"><div class="nav-label">Workspace</div>' + navItems() + "</nav>" +
+      '<div class="sidebar-foot"><div class="side-card"><p>Save towards the things that matter to you.</p><button class="btn btn-primary btn-sm btn-block" data-action="go" data-route="goals">' + icon("goal") + " Savings goals</button></div>" +
+      '<div class="side-user"><div class="avatar">' + esc(initials) + '</div><div><b>' + esc(state.prefs.name || "User") + '</b><small>' + esc(state.prefs.currency) + " account</small></div></div></div></aside>" +
+      '<div class="main"><header class="topbar"><div><h1 class="page-title">' + r.title + '</h1><p class="page-subtitle">' + r.subtitle + '</p></div><div class="topbar-actions">' +
+      '<span class="date-pill">' + new Date().toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) + '</span>' +
+      themeSwitch +
+      '<button class="icon-btn settings-top" data-action="go" data-route="settings" title="Settings">' + icon("settings") + "</button>" +
+      '<a class="btn btn-ghost btn-sm apk-top" href="https://hisabtrack.netlify.app/apk/HisabTrack.apk" download title="Download APK">' + icon("download") + " APK</a>" +
+      '<button class="btn btn-primary" data-action="quick-add">' + icon("plus") + " Quick add</button></div></header>" +
+      '<main class="view">' + VIEWS[ui.route]() + "</main></div></div>" +
+      '<nav class="mobile-nav">' + mobile.map(function (m) {
+        return '<button class="' + (ui.route === m[0] ? "active" : "") + '" data-action="go" data-route="' + m[0] + '">' + icon(ROUTES[m[0]].icon) + "<span>" + m[1] + "</span></button>";
+      }).join("") + "</nav>";
+  }
+  function render() {
+    ui.route = currentRoute();
+    applyTheme();
+    document.title = ROUTES[ui.route].title + " — HisabTrack";
+    const app = $("#app");
+    app.innerHTML = shell();
+    if (ui.route === "transactions") renderTxTable();
+    if (ui.route === "assistant") renderChat();
+    window.scrollTo(0, 0);
+  }
+  function go(route) {
+    if (ROUTES[route]) window.location.hash = "#/" + route;
+  }
+
+  /* ---------- modals ---------- */
+  function closeModal() { $("#modal-root").innerHTML = ""; ui.draft = null; }
+  function openTxModal(tx) {
+    ui.draft = tx ? Object.assign({}, tx) : { type: "expense", amount: "", category: "Food", note: "", date: todayStr() };
+    renderTxModal();
+  }
+  function renderTxModal() {
+    const d = ui.draft;
+    if (!d) return;
+    const editing = !!d.id;
+    const cats = CATEGORIES[d.type].map(function (c) { return '<option value="' + c + '"' + (d.category === c ? " selected" : "") + ">" + c + "</option>"; }).join("");
+    const segs = ["income", "expense", "savings"].map(function (k) {
+      return '<button type="button" data-action="set-type" data-type="' + k + '" class="' + (d.type === k ? "active" : "") + '">' + k.charAt(0).toUpperCase() + k.slice(1) + "</button>";
+    }).join("");
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" role="dialog" aria-modal="true">' +
+      '<div class="modal-head"><h3>' + (editing ? "Edit transaction" : "Add transaction") + '</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<form data-form="tx"><div class="modal-body">' +
+      '<div class="field"><label>Type</label><div class="segmented">' + segs + "</div></div>" +
+      '<div class="field-row"><div class="field"><label>Amount</label><input class="input" data-field="amount" type="number" min="1" step="1" placeholder="0" value="' + esc(d.amount) + '" required autofocus/></div>' +
+      '<div class="field"><label>Date</label><input class="input" data-field="date" type="date" value="' + esc(d.date) + '" required/></div></div>' +
+      '<div class="field"><label>Category</label><select class="input" data-field="category">' + cats + "</select></div>" +
+      '<div class="field"><label>Note</label><input class="input" data-field="note" maxlength="80" placeholder="What was it for?" value="' + esc(d.note) + '"/></div>' +
+      '</div><div class="modal-foot"><button type="button" class="btn btn-outline" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">' + (editing ? "Save changes" : "Add transaction") + "</button></div></form></div></div>";
+  }
+  function openBudgetModal(b) {
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" style="max-width:400px" role="dialog" aria-modal="true">' +
+      '<div class="modal-head"><h3>Edit budget · ' + esc(b.category) + '</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<form data-form="edit-budget"><div class="modal-body"><div class="field"><label>Monthly limit</label>' +
+      '<input class="input" name="limit" type="number" min="1" step="any" value="' + Number(b.limit) + '" required/>' +
+      '<span class="hint">Spent so far this month: ' + money(inMonth(state.transactions, currentKey()).filter(function (x) { return x.type === "expense" && x.category === b.category; }).reduce(function (s, x) { return s + Number(x.amount); }, 0)) + "</span></div></div>" +
+      '<div class="modal-foot"><button type="button" class="btn btn-outline" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary" data-id="' + b.id + '">Save budget</button></div></form></div></div>';
+  }
+  function openGoalModal(g) {
+    const editing = !!g;
+    const sym = SYMBOLS[state.prefs.currency] || "৳";
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" style="max-width:460px" role="dialog" aria-modal="true">' +
+      '<div class="modal-head"><h3>' + (editing ? "Edit goal" : "New savings goal") + '</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<form data-form="goal"><div class="modal-body">' +
+      '<div class="field"><label>Goal name</label><input class="input" name="name" maxlength="60" placeholder="e.g. Buy a Laptop" value="' + esc(editing ? g.name : "") + '" required/></div>' +
+      '<div class="field-row"><div class="field"><label>Target (' + sym + ')</label><input class="input" name="target" type="number" min="1" step="any" placeholder="60000" value="' + esc(editing ? g.target : "") + '" required/></div>' +
+      '<div class="field"><label>Saved so far (' + sym + ')</label><input class="input" name="saved" type="number" min="0" step="any" placeholder="0" value="' + esc(editing ? g.saved : "0") + '"/></div></div>' +
+      '<div class="field"><label>Target date</label><input class="input" name="targetDate" type="date" value="' + esc(editing ? g.targetDate || "" : "") + '"/><span class="hint">Optional — used to work out how much to save each month.</span></div>' +
+      '</div><div class="modal-foot"><button type="button" class="btn btn-outline" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary" data-id="' + (editing ? g.id : "") + '">' + (editing ? "Save changes" : "Create goal") + "</button></div></form></div></div>";
+  }
+  function openConfirm(title, message, action) {
+    $("#modal-root").innerHTML = '<div class="modal-overlay" data-action="overlay"><div class="modal" style="max-width:400px">' +
+      '<div class="modal-head"><h3>' + esc(title) + '</h3><button class="icon-btn" data-action="close-modal">' + icon("close") + "</button></div>" +
+      '<div class="modal-body"><p class="muted" style="margin:0">' + esc(message) + "</p></div>" +
+      '<div class="modal-foot"><button class="btn btn-outline" data-action="close-modal">Cancel</button><button class="btn btn-danger" data-action="' + action.act + '" data-id="' + esc(action.id || "") + '">' + esc(action.label) + "</button></div></div></div>";
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener("click", function (e) {
+    const el = e.target.closest("[data-action]");
+    if (!el) return;
+    const a = el.getAttribute("data-action");
+    if (a === "pin-forgot") { showLock("recover"); return; }
+    if (a === "pin-back") { showLock("pin"); return; }
+    if (a === "lock-now") { showLock("pin"); return; }
+    if (a === "show-recovery") { openRecovery(); return; }
+    if (a === "pin-remove") { openPinRemove(); return; }
+    if (a === "setup-skip") { markSetupDone(); hideSetup(); render(); toast("You can run Guided setup any time from Settings"); return; }
+    if (a === "setup-start") { startSetup(true); return; }
+    if (a === "overlay") { if (e.target === el) closeModal(); return; }
+    if (a === "close-modal") { closeModal(); return; }
+    if (a === "go") { go(el.getAttribute("data-route")); return; }
+    if (a === "set-theme") {
+      state.prefs.theme = el.getAttribute("data-theme") === "light" ? "light" : "dark";
+      save(); applyTheme(); render(); toast(state.prefs.theme === "light" ? "Light theme on" : "Dark theme on");
+      return;
+    }
+    if (a === "set-range") { ui.range = el.getAttribute("data-range") || "6"; render(); return; }
+    if (a === "new-goal") { openGoalModal(null); return; }
+    if (a === "edit-goal") {
+      const g = (state.goals || []).find(function (x) { return x.id === el.getAttribute("data-id"); });
+      if (g) openGoalModal(g);
+      return;
+    }
+    if (a === "delete-goal") {
+      const g = (state.goals || []).find(function (x) { return x.id === el.getAttribute("data-id"); });
+      if (g) openConfirm("Delete this goal?", "“" + g.name + "” and its progress will be removed.", { act: "confirm-delete-goal", id: g.id, label: "Delete" });
+      return;
+    }
+    if (a === "confirm-delete-goal") {
+      state.goals = (state.goals || []).filter(function (x) { return x.id !== el.getAttribute("data-id"); });
+      save(); closeModal(); render(); toast("Goal deleted");
+      return;
+    }
+    if (a === "quick-add") { openTxModal(null); return; }
+    if (a === "set-type") {
+      if (ui.draft) { ui.draft.type = el.getAttribute("data-type"); ui.draft.category = CATEGORIES[ui.draft.type][0]; renderTxModal(); }
+      return;
+    }
+    if (a === "edit-tx") {
+      const t = state.transactions.find(function (x) { return x.id === el.getAttribute("data-id"); });
+      if (t) openTxModal(t);
+      return;
+    }
+    if (a === "delete-tx") {
+      const t = state.transactions.find(function (x) { return x.id === el.getAttribute("data-id"); });
+      if (t) openConfirm("Delete transaction", "Delete “" + (t.note || t.category) + "” of " + money(t.amount) + "? This cannot be undone.", { act: "confirm-delete-tx", id: t.id, label: "Delete" });
+      return;
+    }
+    if (a === "confirm-delete-tx") {
+      state.transactions = state.transactions.filter(function (x) { return x.id !== el.getAttribute("data-id"); });
+      save(); closeModal(); render(); toast("Transaction deleted");
+      return;
+    }
+    if (a === "edit-budget") {
+      const b = state.budgets.find(function (x) { return x.id === el.getAttribute("data-id"); });
+      if (b) openBudgetModal(b);
+      return;
+    }
+    if (a === "delete-budget") {
+      state.budgets = state.budgets.filter(function (x) { return x.id !== el.getAttribute("data-id"); });
+      save(); render(); toast("Budget removed");
+      return;
+    }
+    if (a === "filter-type") { ui.type = el.getAttribute("data-type"); render(); return; }
+    if (a === "chat-preset") { pushChat(el.getAttribute("data-q")); return; }
+    if (a === "export") {
+      try {
+        const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url; link.download = "hisabtrack-backup-" + todayStr() + ".json";
+        document.body.appendChild(link); link.click(); link.remove();
+        URL.revokeObjectURL(url);
+        toast("Backup downloaded");
+      } catch (err) { toast("Export failed", "error"); }
+      return;
+    }
+    if (a === "export-csv") {
+      try {
+        if (!state.transactions.length) { toast("No transactions to export", "error"); return; }
+        const q = function (v) { const s = String(v == null ? "" : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+        const head = ["Date", "Type", "Category", "Note", "Amount (" + state.prefs.currency + ")"];
+        const lines = [head.map(q).join(",")];
+        state.transactions.slice().sort(function (x, y) { return String(y.date).localeCompare(String(x.date)); }).forEach(function (x) {
+          lines.push([x.date, x.type, x.category, x.note || "", x.amount].map(q).join(","));
+        });
+        const blob = new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url; link.download = "hisabtrack-transactions-" + todayStr() + ".csv";
+        document.body.appendChild(link); link.click(); link.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        toast("CSV exported");
+      } catch (err) { toast("Export failed", "error"); }
+      return;
+    }
+    if (a === "import") { const f = $("#import-file"); if (f) f.click(); return; }
+    if (a === "reset-demo") {
+      openConfirm("Restore demo data", "This replaces all current transactions, budgets and goals with sample data.", { act: "confirm-reset", label: "Restore" });
+      return;
+    }
+    if (a === "confirm-reset") { state = seed(); markSetupDone(); save(); closeModal(); render(); toast("Demo data restored"); return; }
+    if (a === "clear-all") {
+      openConfirm("Clear everything", "This permanently deletes all transactions, budgets and goals. Export a backup first if needed.", { act: "confirm-clear", label: "Delete all" });
+      return;
+    }
+    if (a === "confirm-clear") { state = { transactions: [], budgets: [], goals: [], prefs: state.prefs }; markSetupDone(); save(); closeModal(); render(); toast("All data cleared"); return; }
+  });
+
+  document.addEventListener("input", function (e) {
+    const t = e.target;
+    if (t.id === "tx-search") { ui.search = t.value; renderTxTable(); return; }
+    if (ui.draft && t.hasAttribute("data-field")) { ui.draft[t.getAttribute("data-field")] = t.value; }
+  });
+
+  document.addEventListener("submit", function (e) {
+    const form = e.target.closest("form[data-form]");
+    if (!form) return;
+    e.preventDefault();
+    const kind = form.getAttribute("data-form");
+    const f = form.elements;
+    if (kind === "tx") {
+      const d = ui.draft;
+      const amount = Number(d && d.amount);
+      if (!amount || amount <= 0) { toast("Enter an amount greater than zero", "error"); return; }
+      if (!d.date) { toast("Choose a date", "error"); return; }
+      if (d.id) {
+        const idx = state.transactions.findIndex(function (x) { return x.id === d.id; });
+        if (idx >= 0) state.transactions[idx] = Object.assign({}, d, { amount: amount });
+        toast("Transaction updated");
+      } else {
+        state.transactions.push({ id: uid(), type: d.type, amount: amount, category: d.category, note: (d.note || "").trim(), date: d.date });
+        toast("Transaction added");
+      }
+      save(); closeModal(); render();
+    } else if (kind === "budget") {
+      const category = f.category.value;
+      const limit = Number(f.limit.value);
+      if (!limit || limit <= 0) { toast("Enter a valid limit", "error"); return; }
+      const exists = state.budgets.some(function (b) { return b.category === category; });
+      if (exists) { toast("A budget for " + category + " already exists", "error"); return; }
+      state.budgets.push({ id: uid(), category: category, limit: limit });
+      save(); render(); toast("Budget added");
+    } else if (kind === "edit-budget") {
+      const id = form.querySelector('[type="submit"]').getAttribute("data-id");
+      const b = state.budgets.find(function (x) { return x.id === id; });
+      const limit = Number(f.limit.value);
+      if (b && limit > 0) { b.limit = limit; save(); closeModal(); render(); toast("Budget updated"); }
+      else toast("Enter a valid amount", "error");
+    } else if (kind === "goal") {
+      const id = form.querySelector('[type="submit"]').getAttribute("data-id");
+      const name = (f.name.value || "").trim();
+      const target = Number(f.target.value);
+      const saved = Math.max(0, Number(f.saved.value) || 0);
+      const date = f.targetDate.value || "";
+      if (!name) { toast("Enter a goal name", "error"); return; }
+      if (!target || target <= 0) { toast("Enter a target greater than zero", "error"); return; }
+      const data = { name: name, target: target, saved: saved, targetDate: date };
+      state.goals = state.goals || [];
+      if (id) {
+        const g = state.goals.find(function (x) { return x.id === id; });
+        if (g) Object.assign(g, data);
+        toast("Goal updated");
+      } else {
+        state.goals.push(Object.assign({ id: uid() }, data));
+        toast("Goal created");
+      }
+      save(); closeModal(); render();
+    } else if (kind === "overall") {
+      state.prefs.overallBudget = Math.max(0, Number(f.overall.value) || 0);
+      save(); render(); toast("Overall limit saved");
+    } else if (kind === "prefs") {
+      state.prefs.name = (f.name.value || "User").trim();
+      state.prefs.currency = f.currency.value;
+      if (f.theme) state.prefs.theme = f.theme.value === "light" ? "light" : "dark";
+      save(); applyTheme(); render(); toast("Preferences saved");
+    } else if (kind === "chat") {
+      const q = (f.q.value || "").trim();
+      if (q) { f.q.value = ""; pushChat(q); }
+    } else if (kind === "setup-name") {
+      const nameInput = f.namedItem("name");
+      const name = ((nameInput && nameInput.value) || "").trim();
+      if (!name) { toast("Please enter your name", "error"); return; }
+      state.prefs.name = name; save(); render(); hideSetup();
+      toast("Nice to meet you, " + name + "!");
+      setTimeout(function () { showSetup(1); }, 900);
+    } else if (kind === "setup-step") {
+      const s = SETUP_STEPS[setup.step - 1];
+      if (!s) return;
+      const valueInput = f.namedItem("value");
+      setup.data[s.key] = Math.max(0, Number(valueInput && valueInput.value) || 0);
+      if (setup.step < SETUP_STEPS.length) showSetup(setup.step + 1);
+      else finishSetup();
+    } else if (kind === "pin-unlock") {
+      const val = (f.pin.value || "").trim();
+      if (!/^\d{4,6}$/.test(val)) { pinError("Enter your 4–6 digit PIN"); return; }
+      hashPin(val, pin.data.salt).then(function (h) {
+        if (h === pin.data.hash) { hideLock(); toast("Unlocked"); }
+        else pinError("Incorrect PIN");
+      });
+    } else if (kind === "pin-recover") {
+      const code = (f.code.value || "").trim().toUpperCase();
+      if (code && code === pin.data.recovery) {
+        disablePin(); hideLock(); render(); toast("PIN removed — set a new one in Settings");
+      } else pinError("Incorrect recovery code");
+    } else if (kind === "pin-settings") {
+      const next = (f.pin.value || "").trim();
+      const confirm = (f.confirm.value || "").trim();
+      const autoLock = Math.max(0, Number(f.autoLock.value) || 0);
+      if (next && !/^\d{4,6}$/.test(next)) { toast("PIN must be 4–6 digits", "error"); return; }
+      if (next && next !== confirm) { toast("PINs do not match", "error"); return; }
+      function finishPin() {
+        const first = !pin.data.enabled || !pin.data.hash;
+        const salt = newSalt();
+        hashPin(next, salt).then(function (h) {
+          pin.data.enabled = true; pin.data.salt = salt; pin.data.hash = h; pin.data.autoLock = autoLock;
+          if (first || !pin.data.recovery) pin.data.recovery = makeRecovery();
+          savePin(); render();
+          if (first) openRecovery(); else toast("PIN lock updated");
+        });
+      }
+      if (pin.data.enabled) {
+        const current = (f.current.value || "").trim();
+        hashPin(current, pin.data.salt).then(function (h) {
+          if (h !== pin.data.hash) { toast("Current PIN is incorrect", "error"); return; }
+          finishPin();
+        });
+      } else if (next) finishPin();
+      else { pin.data.autoLock = autoLock; savePin(); render(); toast("Auto-lock updated"); }
+    } else if (kind === "pin-disable") {
+      const current = (f.current.value || "").trim();
+      hashPin(current, pin.data.salt).then(function (h) {
+        if (h !== pin.data.hash) { toast("Current PIN is incorrect", "error"); return; }
+        disablePin(); closeModal(); render(); toast("PIN lock turned off");
+      });
+    }
+  });
+
+  function pushChat(q) {
+    ui.chat.push({ who: "user", text: q });
+    ui.chat.push({ who: "bot", text: assistantAnswer(q) });
+    renderChat();
+  }
+
+  document.addEventListener("change", function (e) {
+    if (e.target.id === "import-file" && e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function () {
+        try {
+          const parsed = JSON.parse(reader.result);
+          if (!parsed || !Array.isArray(parsed.transactions) || !Array.isArray(parsed.budgets)) throw new Error("bad file");
+          state = parsed;
+          state.prefs = state.prefs || { currency: "BDT", name: "User", overallBudget: 0, theme: "dark" };
+          state.goals = Array.isArray(state.goals) ? state.goals : [];
+          markSetupDone(); save(); render(); toast("Data imported successfully");
+        } catch (err) { toast("That file is not a valid HisabTrack backup", "error"); }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeModal();
+  });
+  window.addEventListener("hashchange", render);
+
+  /* ---------- activity tracking & auto-lock ---------- */
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach(function (ev) {
+    window.addEventListener(ev, function () { pin.lastActivity = Date.now(); }, { passive: true });
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) pin.lastActivity = Date.now();
+  });
+  setInterval(function () {
+    if (!pin.locked && pin.data && pin.data.enabled && pin.data.autoLock > 0) {
+      if (Date.now() - pin.lastActivity >= pin.data.autoLock * 60000) showLock("pin");
+    }
+  }, 15000);
+
+  /* ---------- boot ---------- */
+  const brandNew = localStorage.getItem(STORE_KEY) === null;
+  if (brandNew && localStorage.getItem(SETUP_KEY) !== "done") {
+    try { localStorage.setItem(SETUP_KEY, "pending"); } catch (e) {}
+  }
+  save();
+  pin.data = loadPin();
+  if (!window.location.hash) window.location.hash = "#/dashboard";
+  render();
+  if (pin.data.enabled && pin.data.hash) showLock("pin");
+  else if (localStorage.getItem(SETUP_KEY) === "pending") showSetup(0);
+})();
+
+</script>
+    <script>
+/* HisabTrack — install prompt */
+(function () {
+  "use strict";
+  var deferred = null;
+
+  function button() { return document.getElementById("pwa-install"); }
+
+  function hide() {
+    var b = button();
+    if (b && b.parentNode) b.parentNode.removeChild(b);
+  }
+
+  function show() {
+    if (!deferred || button()) return;
+    var actions = document.querySelector(".topbar-actions");
+    if (!actions) return;
+    var b = document.createElement("button");
+    b.id = "pwa-install";
+    b.type = "button";
+    b.className = "btn btn-outline btn-sm";
+    b.setAttribute("aria-label", "অ্যাপ ইনস্টল করুন");
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg> অ্যাপ ইনস্টল';
+    b.addEventListener("click", function () {
+      if (!deferred) return;
+      deferred.prompt();
+      deferred.userChoice.then(function () { deferred = null; hide(); }).catch(function () { deferred = null; hide(); });
+    });
+    actions.insertBefore(b, actions.firstChild);
+  }
+
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferred = e;
+    show();
+  });
+  window.addEventListener("appinstalled", function () { deferred = null; hide(); });
+
+  if (document.body) {
+    new MutationObserver(function () { if (deferred) show(); }).observe(document.body, { childList: true, subtree: true });
+    show();
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      new MutationObserver(function () { if (deferred) show(); }).observe(document.body, { childList: true, subtree: true });
+      show();
+    });
+  }
+})();
+
+</script>
+    <script>
+/* HisabTrack — Bengali / English language layer.
+   Adds a EN / বাং switch and translates rendered text automatically. */
+(function () {
+  "use strict";
+
+  var KEY = "takatrack.lang";
+  var current = "bn";
+  try { var saved = localStorage.getItem(KEY); if (saved === "en" || saved === "bn") current = saved; } catch (e) {}
+
+  var DICT = {
+    /* navigation & shell */
+    "Dashboard": "ড্যাশবোর্ড",
+    "Your money at a glance": "আপনার টাকার এক নজরে হিসাব",
+    "Transactions": "লেনদেন",
+    "Every taka in and out": "প্রতিটি টাকার আসা-যাওয়া",
+    "Budgets": "বাজেট",
+    "Plan your monthly spending": "মাসিক খরচের পরিকল্পনা",
+    "Savings Assistant": "সঞ্চয় সহকারী",
+    "Smart, rule-based insights": "স্মার্ট, নিয়মভিত্তিক পরামর্শ",
+    "Settings": "সেটিংস",
+    "Preferences and your data": "পছন্দ এবং আপনার ডেটা",
+    "Money, made clear": "টাকার হিসাব, সহজভাবে",
+    "Workspace": "ওয়ার্কস্পেস",
+    "Quick add": "দ্রুত যোগ",
+    "View insights": "পরামর্শ দেখুন",
+    "account": "অ্যাকাউন্ট",
+    "Analytics": "অ্যানালিটিক্স",
+    "Charts built from your real transactions": "আপনার আসল লেনদেন থেকে তৈরি চার্ট",
+    "Savings Goals": "সঞ্চয়ের লক্ষ্য",
+    "Save towards what matters to you": "যা গুরুত্বপূর্ণ, তার দিকে সঞ্চয় করুন",
+    "Track your money. Control your future.": "টাকার হিসাব রাখুন। ভবিষ্যৎ নিয়ন্ত্রণ করুন।",
+    "Theme": "থিম",
+    "Dark theme": "ডার্ক থিম",
+    "Light theme": "লাইট থিম",
+    "Home": "হোম",
+    "Txns": "লেনদেন",
+    "Charts": "চার্ট",
+    "AI": "এআই",
+    "Savings goals": "সঞ্চয়ের লক্ষ্য",
+    "Dark": "ডার্ক",
+    "Light": "লাইট",
+    "Easy on the eyes": "চোখের জন্য আরামদায়ক",
+    "Bright and clean": "উজ্জ্বল ও পরিচ্ছন্ন",
+    "Choose how HisabTrack looks": "হিসাবট্র্যাক কেমন দেখাবে বেছে নিন",
+    "Welcome back, ": "আবার স্বাগতম, ",
+    "Here's your financial overview.": "এটা আপনার আর্থিক সারাংশ।",
+
+    /* dashboard */
+    "Total Balance": "মোট ব্যালেন্স",
+    "Total Income": "মোট আয়",
+    "Total Expenses": "মোট খরচ",
+    "Total Savings": "মোট সঞ্চয়",
+    "this month": "এই মাসে",
+    "% of all income saved": "% আয় সঞ্চয়ের হার",
+    "Add income to see your savings rate": "সঞ্চয়ের হার দেখতে আয় যোগ করুন",
+    "Income vs Expense": "আয় বনাম খরচ",
+    "Last 6 months": "গত ৬ মাস",
+    "No transactions yet": "এখনো কোনো লেনদেন নেই",
+    "Add your first income or expense to see the chart.": "চার্ট দেখতে প্রথম আয় বা খরচ যোগ করুন।",
+    "Spending by category": "ক্যাটাগরি অনুযায়ী খরচ",
+    "Spent": "খরচ",
+    "No expenses this month": "এই মাসে কোনো খরচ নেই",
+    "Expenses you add will be grouped by category here.": "আপনি যে খরচ যোগ করবেন, তা এখানে ক্যাটাগরি অনুযায়ী দেখা যাবে।",
+    "Recent transactions": "সাম্প্রতিক লেনদেন",
+    "Your latest activity": "আপনার সর্বশেষ কার্যকলাপ",
+    "View all": "সব দেখুন",
+    "Nothing recorded yet": "এখনো কিছু রেকর্ড করা হয়নি",
+    "Add your first transaction to get started.": "শুরু করতে প্রথম লেনদেন যোগ করুন।",
+    "Add transaction": "লেনদেন যোগ করুন",
+    "Monthly budget": "মাসিক বাজেট",
+    "Manage": "পরিচালনা",
+    "Total budget": "মোট বাজেট",
+    "AI savings insights": "AI সঞ্চয় পরামর্শ",
+    "Rule-based analysis": "নিয়মভিত্তিক বিশ্লেষণ",
+    "Savings score:": "সঞ্চয় স্কোর:",
+    "Suggested target:": "প্রস্তাবিত লক্ষ্য:",
+    "/month": "/মাস",
+    "Add income to get a target": "লক্ষ্য পেতে আয় যোগ করুন",
+    "Ask the savings assistant": "সঞ্চয় সহকারীকে জিজ্ঞাসা করুন",
+    "No budgets set": "কোনো বাজেট সেট করা নেই",
+    "Create a budget to keep spending in check.": "খরচ নিয়ন্ত্রণে রাখতে বাজেট তৈরি করুন।",
+    "Set a budget": "বাজেট সেট করুন",
+    "left": "বাকি",
+    "over": "অতিরিক্ত",
+
+    /* report insights */
+    "Healthy savings rate": "সুস্থ সঞ্চয়ের হার",
+    "You are saving ": "আপনি সঞ্চয় করছেন ",
+    "% of income. Keep it up!": "% আয়ের। চালিয়ে যান!",
+    "Room to save more": "আরও সঞ্চয়ের সুযোগ",
+    "Your savings rate is ": "আপনার সঞ্চয়ের হার ",
+    "%. Aim for at least 20%.": "%। কমপক্ষে ২০% লক্ষ্য করুন।",
+    "No savings recorded": "কোনো সঞ্চয় রেকর্ড নেই",
+    "Try setting aside a small amount every month, even ৳ 500 counts.": "প্রতি মাসে সামান্য অঙ্ক আলাদা করে রাখুন, ৳ ৫০০-ও গণনা হয়।",
+    "Budget exceeded": "বাজেট অতিক্রম",
+    "category is over limit, led by": "ক্যাটাগরি সীমা অতিক্রম করেছে, যার মধ্যে প্রধান",
+    "categories are over limit, led by": "ক্যাটাগরি সীমা অতিক্রম করেছে, যার মধ্যে প্রধান",
+    "Budgets on track": "বাজেট ঠিক পথে",
+    "You are within all of your category limits this month.": "এই মাসে আপনি সব ক্যাটাগরির সীমার মধ্যে আছেন।",
+    "Top spending category": "সবচেয়ে বেশি খরচের ক্যাটাগরি",
+    " takes ": " এর খরচ ",
+    "% of this month's expenses.": "% এই মাসের খরচের।",
+    "Spending is balanced": "খরচের ভারসাম্য ভালো",
+    "No single category dominates your expenses this month.": "এই মাসে কোনো একক ক্যাটাগরি খরচে আধিপত্য করেনি।",
+    "Add your income": "আপনার আয় যোগ করুন",
+    "Record income to unlock your savings rate and targets.": "সঞ্চয়ের হার ও লক্ষ্য দেখতে আয় রেকর্ড করুন।",
+    "Excellent": "চমৎকার",
+    "Good": "ভালো",
+    "Fair": "মোটামুটি",
+    "Needs attention": "মনোযোগ প্রয়োজন",
+
+    /* assistant answers & chat */
+    "Your all-time savings rate is ": "আপনার সামগ্রিক সঞ্চয়ের হার ",
+    "% of income. A common guideline is 20%.": "% আয়ের। সাধারণ নির্দেশিকা ২০%।",
+    " Based on your income, a good monthly target would be around ": " আপনার আয় অনুযায়ী, ভালো মাসিক লক্ষ্য হতে পারে ",
+    ". You have saved ": ". আপনি সঞ্চয় করেছেন ",
+    " so far.": " পর্যন্ত।",
+    " Add some income to unlock a personalised target.": " ব্যক্তিগত লক্ষ্য পেতে কিছু আয় যোগ করুন।",
+    "You have not set any budgets yet. Head to the Budgets page to create one.": "আপনি এখনো কোনো বাজেট সেট করেননি। একটি তৈরি করতে বাজেট পেইজে যান।",
+    "Warning: ": "সতর্কতা: ",
+    " exceeded the limit this month.": " এই মাসে সীমা অতিক্রম করেছে।",
+    "You have used ": "আপনি ব্যবহার করেছেন ",
+    "% of your overall monthly limit, with ": "% সামগ্রিক মাসিক সীমার, সাথে ",
+    " left.": " বাকি।",
+    "All category budgets are on track this month. Nicely done!": "এই মাসে সব ক্যাটাগরির বাজেট ঠিক পথে। দারুণ!",
+    "No expenses recorded this month yet.": "এই মাসে এখনো কোনো খরচ রেকর্ড করা হয়নি।",
+    "This month you spent ": "এই মাসে আপনি খরচ করেছেন ",
+    ". Your biggest category is ": ". আপনার সবচেয়ে বড় ক্যাটাগরি ",
+    " at ": " যার পরিমাণ ",
+    "% of spending).": "% খরচের।)",
+    "You have recorded ": "আপনি রেকর্ড করেছেন ",
+    " of total income, including ": " মোট আয়ের, যার মধ্যে ",
+    " this month.": " এই মাসে।",
+    "Your current balance is ": "আপনার বর্তমান ব্যালেন্স ",
+    " (income minus expenses and savings).": " (আয় বাদে খরচ ও সঞ্চয়)।",
+    "Hi! I can analyse your income, expenses, budgets and savings. Try asking about your biggest expense or your savings rate.": "আসসালামুয়ালাইকুম! আমি আপনার আয়, খরচ, বাজেট ও সঞ্চয় বিশ্লেষণ করতে পারি। সবচেয়ে বড় খরচ বা সঞ্চয়ের হার সম্পর্কে জিজ্ঞাসা করুন।",
+    "I can help with your savings rate, budgets, spending categories, income and balance. Try one of the suggested questions above.": "আমি সঞ্চয়ের হার, বাজেট, খরচের ক্যাটাগরি, আয় ও ব্যালেন্সে সাহায্য করতে পারি। উপরের প্রশ্নগুলোর একটি চেষ্টা করুন।",
+    "Hi! I am your HisabTrack savings assistant. Ask me anything about your money, or tap a suggested question.": "আসসালামুয়ালাইকুম! আমি আপনার হিসাবট্র্যাক সঞ্চয় সহকারী। আপনার টাকা সম্পর্কে যেকোনো প্রশ্ন করুন, অথবা একটি পরামর্শ প্রশ্নে টিপ দিন।",
+    "How am I saving?": "আমি কীভাবে সঞ্চয় করছি?",
+    "Where did I spend most?": "সবচেয়ে বেশি কোথায় খরচ করেছি?",
+    "Am I over budget?": "আমি কি বাজেট অতিক্রম করেছি?",
+    "What is my balance?": "আমার ব্যালেন্স কত?",
+    "Ask about your money…": "আপনার টাকা সম্পর্কে জিজ্ঞাসা করুন…",
+    "Your savings health": "আপনার সঞ্চয়ের অবস্থা",
+    "Based on your current data": "আপনার বর্তমান ডেটা অনুযায়ী",
+    "Suggested savings target:": "প্রস্তাবিত সঞ্চয় লক্ষ্য:",
+    "per month": "প্রতি মাসে",
+    "Add income to unlock a suggested target": "লক্ষ্য পেতে আয় যোগ করুন",
+    "Ask the assistant": "সহকারীকে জিজ্ঞাসা করুন",
+    "Answers are generated from your own data": "উত্তরগুলো আপনার নিজের ডেটা থেকে তৈরি",
+
+    /* transactions */
+    "Money In": "আয়",
+    "Money Out": "খরচ",
+    "Saved": "সঞ্চয়",
+    "All time": "সম্পূর্ণ সময়",
+    "All transactions": "সমস্ত লেনদেন",
+    "Search by note, category or date…": "নোট, ক্যাটাগরি বা তারিখ দিয়ে খুঁজুন…",
+    "All": "সব",
+    "Income": "আয়",
+    "Expense": "খরচ",
+    "Savings": "সঞ্চয়",
+    "Add new": "নতুন যোগ",
+    "records": "রেকর্ড",
+    "record": "রেকর্ড",
+    "No matching transactions": "কোনো মিলে এমন লেনদেন নেই",
+    "Try a different search or filter.": "অন্য কিছু খুঁজুন বা ফিল্টার বদলান।",
+    "Details": "বিবরণ",
+    "Date": "তারিখ",
+    "Category": "ক্যাটাগরি",
+    "Amount": "অঙ্ক",
+
+    /* budgets */
+    "Monthly budgets": "মাসিক বাজেট",
+    "Overall monthly limit": "সামগ্রিক মাসিক সীমা",
+    "% used": "% ব্যবহৃত",
+    "spent of": "খরচ",
+    "remaining": "বাকি",
+    "over budget": "বাজেটের বেশি",
+    "No category budgets yet": "এখনো কোনো ক্যাটাগরি বাজেট নেই",
+    "Add one below to start tracking categories.": "ক্যাটাগরি ট্র্যাক করতে নিচে একটি যোগ করুন।",
+    "Add a budget": "বাজেট যোগ করুন",
+    "Set a monthly spending limit for a category": "একটি ক্যাটাগরির জন্য মাসিক খরচের সীমা সেট করুন",
+    "Monthly limit": "মাসিক সীমা",
+    "Add budget": "বাজেট যোগ করুন",
+    "Overall limit": "সামগ্রিক সীমা",
+    "A single cap for all expenses this month": "এই মাসে সব খরচের জন্য একটি সীমা",
+    "Total monthly limit": "মোট মাসিক সীমা",
+    "Save limit": "সীমা সংরক্ষণ",
+
+    /* settings */
+    "Preferences": "পছন্দসমূহ",
+    "Personalise your HisabTrack": "আপনার হিসাবট্র্যাক কাস্টমাইজ করুন",
+    "Display name": "প্রদর্শিত নাম",
+    "Currency": "মুদ্রা",
+    "Amounts are stored as numbers; only the symbol changes.": "অঙ্ক সংখ্যা হিসেবেই থাকে; শুধু প্রতীক বদলায়।",
+    "Save preferences": "পছন্দ সংরক্ষণ",
+    "Your data": "আপনার ডেটা",
+    "Everything is stored in this browser": "সবকিছু এই ব্রাউজারেই সংরক্ষিত",
+    "Storage used": "ব্যবহৃত স্টোরেজ",
+    "Export JSON": "JSON এক্সপোর্ট",
+    "Import JSON": "JSON ইম্পোর্ট",
+    "Restore demo data": "ডেমো ডেটা ফেরত আনুন",
+    "Clear everything": "সব মুছুন",
+    "Android app": "অ্যান্ড্রয়েড অ্যাপ",
+    "Install it on your phone": "ফোনে ইনস্টল করুন",
+    "Download the APK file, open it on your Android phone, and allow installation from unknown sources to install HisabTrack as a full-screen app.": "APK ফাইলটি ডাউনলোড করে আপনার অ্যান্ড্রয়েড ফোনে খুলুন এবং অজানা উৎস থেকে ইনস্টলের অনুমতি দিয়ে HisabTrack-কে ফুলস্ক্রিন অ্যাপ হিসেবে ইনস্টল করুন।",
+    "Download APK": "APK ডাউনলোড",
+    "Open web app": "ওয়েব অ্যাপ খুলুন",
+
+    /* guided setup */
+    "Welcome to HisabTrack": "হিসাবট্র্যাকে স্বাগতম",
+    "Your personal money manager. Let us set it up together in a few quick steps.": "আপনার ব্যক্তিগত অর্থ ব্যবস্থাপক। চলুন কয়েকটি সহজ ধাপে এটি সেটআপ করি।",
+    "Hi, I am your savings assistant.": "হাই, আমি আপনার সঞ্চয় সহকারী।",
+    "First, what should I call you?": "প্রথমে, আপনাকে কী বলে ডাকব?",
+    "Your name": "আপনার নাম",
+    "e.g. Rahim": "যেমন: রহিম",
+    "Get started": "শুরু করুন",
+    "Nice to meet you, ": "আপনার সাথে দেখা করে ভালো লাগলো, ",
+    "Step": "ধাপ",
+    "Monthly income": "মাসিক আয়",
+    "Let us begin with the money that comes in. Enter your monthly salary or total regular income — for example 45000.": "চলুন আগে দেখি কত টাকা আসে। আপনার মাসিক বেতন বা মোট নিয়মিত আয় লিখুন — যেমন ৪৫০০০।",
+    "Salary, freelance, business — anything you receive every month.": "বেতন, ফ্রিল্যান্স, ব্যবসা — মাসে যা কিছু পান।",
+    "House rent": "বাড়ির ভাড়া",
+    "Now your biggest fixed cost. Enter the monthly rent you pay for your home.": "এখন আপনার বড় নির্দিষ্ট খরচ। বাড়ির মাসিক ভাড়া লিখুন।",
+    "If you live with family and pay nothing, enter 0.": "বাড়িতে থাকলে ভাড়া না দিলে ০ লিখুন।",
+    "Food & groceries": "খাদ্য ও কেনাকাটা",
+    "Tell us what you usually spend on food, groceries and daily meals in one month.": "মাসে খাবার, গ্রোসারি ও দৈনিক খরচে সাধারণত কত খরচ করেন?",
+    "A rough average is fine — you can edit everything later.": "আন্দাজমতো লিখলেও চলবে — পরে সব ঠিক করা যাবে।",
+    "Transport, utilities & shopping": "যাতায়াত, বিদ্যুৎ ও কেনাকাটা",
+    "Almost done. Enter your combined monthly spending on transport, electricity/internet and shopping. We will split it into three budgets for you.": "প্রায় শেষ। যাতায়াত, বিদ্যুৎ/ইন্টারনেট ও কেনাকাটায় মাসে মোট কত খরচ করেন? আমি সেটিকে তিনটি বাজেটে ভাগ করে দেব।",
+    "Example: 8000 becomes roughly 3200 transport, 2800 utilities, 2000 shopping.": "উদাহরণ: ৮০০০ হলে প্রায় ৩২০০ যাতায়াত, ২৮০০ বিদ্যুৎ, ২০০০ কেনাকাটা।",
+    "Monthly savings": "মাসিক সঞ্চয়",
+    "Great habit! How much would you like to set aside every month? We will record it as an emergency fund contribution.": "দারুণ অভ্যাস! প্রতি মাসে কত টাকা পাশে রাখতে চান? আমি সেটিকে জরুরি তহবিল হিসেবে হিসাব করব।",
+    "Even a small amount counts. Enter 0 to skip.": "সামান্যও হলেও চলবে। ছেড়ে দিতে ০ লিখুন।",
+    "Monthly spending limit": "মাসিক খরচের সীমা",
+    "Finally, set a total monthly spending limit. We will use it to show your budget health on the dashboard.": "সবশেষে মোট মাসিক খরচের একটা সীমা নির্ধারণ করুন। ড্যাশবোর্ডে বাজেটের অবস্থা দেখতে এটা কাজে লাগবে।",
+    "Leave blank and we will calculate it from your answers.": "খালি রাখলে আপনার উত্তর থেকে হিসাব করে নেব।",
+    "Amount (BDT)": "অর্থ (টাকা)",
+    "Next": "পরবর্তী",
+    "Finish setup": "সেটআপ শেষ করুন",
+    "Skip setup": "সেটআপ এড়িয়ে যান",
+    "Setup complete — your numbers are ready!": "সেটআপ সম্পন্ন — আপনার হিসাব প্রস্তুত!",
+    "Please enter your name": "আপনার নাম লিখুন",
+    "Guided setup": "গাইডেড সেটআপ",
+    "You can run Guided setup any time from Settings": "সেটিংস থেকে যেকোনো সময় গাইডেড সেটআপ চালাতে পারেন",
+
+    /* PIN lock */
+    "PIN lock": "PIN লক",
+    "Protect this browser with a 4–6 digit PIN": "৪–৬ ডিজিটের PIN দিয়ে এই ব্রাউজার সুরক্ষিত করুন",
+    "Status": "অবস্থা",
+    "On": "চালু",
+    "Off": "বন্ধ",
+    "Current PIN": "বর্তমান PIN",
+    "New PIN": "নতুন PIN",
+    "PIN": "PIN",
+    "Confirm PIN": "PIN নিশ্চিত করুন",
+    "4–6 digits": "৪–৬ ডিজিট",
+    "Repeat": "আবার লিখুন",
+    "Auto-lock after inactivity": "নিষ্ক্রিয়তার পর স্বয়ংক্রিয় লক",
+    "Locks the app after this much time without activity. Off means only manual lock.": "এতক্ষণ কোনো কার্যকলাপ না হলে অ্যাপ লক হবে। বন্ধ রাখলে শুধু ম্যানুয়াল লক কাজ করবে।",
+    "1 minute": "১ মিনিট",
+    "5 minutes": "৫ মিনিট",
+    "15 minutes": "১৫ মিনিট",
+    "30 minutes": "৩০ মিনিট",
+    "Update PIN lock": "PIN লক আপডেট",
+    "Enable PIN lock": "PIN লক চালু করুন",
+    "Auto-lock updated": "স্বয়ংক্রিয় লক আপডেট হয়েছে",
+    "Lock now": "এখনই লক",
+    "Recovery code": "রিকভারি কোড",
+    "Turn off PIN": "PIN বন্ধ করুন",
+    "Turn off PIN lock": "PIN লক বন্ধ করুন",
+    "Your transactions and budgets are not affected.": "আপনার লেনদেন ও বাজেটের কোনো ক্ষতি হবে না।",
+    "This is a screen lock for this browser only. It does not encrypt your data. Export JSON backups to protect them.": "এটি শুধু এই ব্রাউজারের জন্য স্ক্রিন লক। এটা আপনার ডেটা এনক্রিপ্ট করে না। সুরক্ষার জন্য JSON ব্যাকআপ রাখুন।",
+    "Save this code somewhere safe. If you forget your PIN, enter it on the lock screen to remove the PIN without losing your data.": "এই কোডটি নিরাপদ জায়গায় রাখুন। PIN ভুলে গেলে লক স্ক্রিনে এই কোড দিয়ে ডেটা না হারিয়েই PIN সরাতে পারবেন।",
+    "I saved it": "আমি সংরক্ষণ করেছি",
+    "Enter your PIN to continue": "চালিয়ে যেতে আপনার PIN দিন",
+    "Enter your recovery code": "আপনার রিকভারি কোড দিন",
+    "Unlock": "আনলক",
+    "Unlocked": "আনলক হয়েছে",
+    "Reset PIN": "PIN রিসেট",
+    "Forgot PIN?": "PIN ভুলে গেছেন?",
+    "Back to PIN": "PIN-এ ফিরে যান",
+    "Enter your 4–6 digit PIN": "৪–৬ ডিজিটের PIN দিন",
+    "Incorrect PIN": "ভুল PIN",
+    "Incorrect recovery code": "ভুল রিকভারি কোড",
+    "PIN must be 4–6 digits": "PIN অবশ্যই ৪–৬ ডিজিট হতে হবে",
+    "PINs do not match": "PIN দুটি মিলছে না",
+    "Current PIN is incorrect": "বর্তমান PIN ভুল",
+    "PIN lock updated": "PIN লক আপডেট হয়েছে",
+    "PIN removed — set a new one in Settings": "PIN সরানো হয়েছে — সেটিংসে নতুন PIN সেট করুন",
+    "PIN lock turned off": "PIN লক বন্ধ হয়েছে",
+    "Could not save PIN": "PIN সংরক্ষণ করা যায়নি",
+
+    "About HisabTrack": "হিসাবট্র্যাক সম্পর্কে",
+    "HisabTrack is a simple, private finance manager. No account, no server, no tracking — your data never leaves this browser.": "হিসাবট্র্যাক একটি সরল, ব্যক্তিগত ফাইন্যান্স ম্যানেজার। কোনো অ্যাকাউন্ট, সার্ভার বা ট্র্যাকিং নেই — আপনার ডেটা কখনো এই ব্রাউজারের বাইরে যায় না।",
+    "Tip: use Export JSON to back up your data regularly, and Import JSON to restore it on another device.": "টিপ: নিয়মিত JSON এক্সপোর্ট করে ব্যাকআপ রাখুন এবং অন্য ডিভাইসে JSON ইম্পোর্ট করে ফেরত আনুন।",
+
+    /* modal & confirmations */
+    "Edit transaction": "লেনদেন সম্পাদনা",
+    "Type": "ধরন",
+    "Note": "নোট",
+    "What was it for?": "কী জন্য ছিল?",
+    "Cancel": "বাতিল",
+    "Save changes": "পরিবর্তন সংরক্ষণ",
+    "Edit budget ·": "বাজেট সম্পাদনা ·",
+    "Spent so far this month:": "এই মাসে এখন পর্যন্ত খরচ:",
+    "Save budget": "বাজেট সংরক্ষণ",
+    "Delete transaction": "লেনদেন মুছুন",
+    "Delete “": "«",
+    "” of ": "» এর অঙ্ক ",
+    "? This cannot be undone.": "? এটি ফেরত আনা যাবে না।",
+    "Delete": "মুছুন",
+    "This replaces all current transactions and budgets with sample data.": "এটি বর্তমান সব লেনদেন ও বাজেটকে নমুনা ডেটা দিয়ে প্রতিস্থাপন করবে।",
+    "Restore": "ফেরত আনুন",
+    "This permanently deletes all transactions and budgets. Export a backup first if needed.": "এটি সব লেনদেন ও বাজেট স্থায়ীভাবে মুছে দেবে। প্রয়োজনে আগে ব্যাকআপ নিন।",
+    "Delete all": "সব মুছুন",
+
+    /* toasts */
+    "Transaction deleted": "লেনদেন মুছে দেওয়া হয়েছে",
+    "Transaction added": "লেনদেন যোগ করা হয়েছে",
+    "Transaction updated": "লেনদেন আপডেট করা হয়েছে",
+    "Budget added": "বাজেট যোগ করা হয়েছে",
+    "Budget updated": "বাজেট আপডেট করা হয়েছে",
+    "Budget removed": "বাজেট সরানো হয়েছে",
+    "Overall limit saved": "সামগ্রিক সীমা সংরক্ষিত",
+    "Preferences saved": "পছন্দ সংরক্ষিত",
+    "Backup downloaded": "ব্যাকআপ ডাউনলোড হয়েছে",
+    "Export failed": "এক্সপোর্ট ব্যর্থ",
+    "Data imported successfully": "ডেটা সফলভাবে ইম্পোর্ট হয়েছে",
+    "That file is not a valid HisabTrack backup": "এই ফাইলটি বৈধ হিসাবট্র্যাক ব্যাকআপ নয়",
+    "Demo data restored": "ডেমো ডেটা ফেরত এসেছে",
+    "All data cleared": "সব ডেটা মুছে দেওয়া হয়েছে",
+    "Enter an amount greater than zero": "শূন্যের চেয়ে বড় অঙ্ক লিখুন",
+    "Choose a date": "একটি তারিখ বাছুন",
+    "Enter a valid limit": "বৈধ সীমা লিখুন",
+    "A budget for ": "এই ক্যাটাগরির বাজেট ",
+    "already exists": "আগে থেকেই আছে",
+    "Enter a valid amount": "বৈধ অঙ্ক লিখুন",
+
+    /* analytics */
+    "3 months": "৩ মাস",
+    "6 months": "৬ মাস",
+    "12 months": "১২ মাস",
+    "8 weeks": "৮ সপ্তাহ",
+    "month": "মাস",
+    "months": "মাস",
+    "Last ": "গত ",
+    "Total": "মোট",
+    "total": "মোট",
+    "Month": "মাস",
+    "Expense": "খরচ",
+    "Expenses": "খরচ",
+    "Savings rate": "সঞ্চয়ের হার",
+    "Not enough data for this period": "এই সময়ের জন্য পর্যাপ্ত ডেটা নেই",
+    "Add some income and expenses, or choose a longer date range.": "কিছু আয় ও খরচ যোগ করুন, অথবা দীর্ঘ সময় বাছুন।",
+    "No expenses in this period": "এই সময়ে কোনো খরচ নেই",
+    "Avg. monthly income": "গড় মাসিক আয়",
+    "Avg. monthly expense": "গড় মাসিক খরচ",
+    "Highest spending": "সবচেয়ে বেশি খরচ",
+    "% of spending": "% খরচের",
+    "Best saving month": "সেরা সঞ্চয়ের মাস",
+    "No months yet": "এখনো কোনো মাস নেই",
+    "No savings yet": "এখনো সঞ্চয় নেই",
+    "Monthly income vs expense": "মাসিক আয় বনাম খরচ",
+    "Category breakdown": "ক্যাটাগরি বিশ্লেষণ",
+    "Share of total expenses": "মোট খরচের ভাগ",
+    "Weekly spending": "সাপ্তাহিক খরচ",
+    "Savings trend": "সঞ্চয়ের প্রবণতা",
+    "Monthly and cumulative savings": "মাসিক ও ক্রমবর্ধমান সঞ্চয়",
+    "Monthly financial summary": "মাসিক আর্থিক সারাংশ",
+    "All amounts in ": "সব অঙ্ক ",
+
+    /* savings goals */
+    "Save towards the things that matter to you": "যা গুরুত্বপূর্ণ, তার দিকে সঞ্চয় করুন",
+    "New goal": "নতুন লক্ষ্য",
+    "No savings goals yet": "এখনো কোনো সঞ্চয়ের লক্ষ্য নেই",
+    "Try a laptop, a new phone or an emergency fund.": "ল্যাপটপ, নতুন ফোন বা জরুরি তহবিল চেষ্টা করুন।",
+    "Create a goal": "লক্ষ্য তৈরি করুন",
+    "Total saved": "মোট সঞ্চয়",
+    "% of all goals": "সব লক্ষ্যের %",
+    "No target set": "কোনো লক্ষ্য নির্ধারণ করা নেই",
+    "Still needed": "এখনো প্রয়োজন",
+    "Across all goals": "সব লক্ষ্য জুড়ে",
+    "Completed": "সম্পন্ন",
+    "Goals reached": "লক্ষ্য অর্জিত",
+    "Goal reached 🎉": "লক্ষ্য অর্জিত 🎉",
+    "Passed": "অতিক্রম",
+    "No target date": "কোনো লক্ষ্যের তারিখ নেই",
+    "Edit goal": "লক্ষ্য সম্পাদনা",
+    "Delete goal": "লক্ষ্য মুছুন",
+    "Remaining": "বাকি",
+    "Deadline": "শেষ তারিখ",
+    "Save monthly": "মাসিক সঞ্চয়",
+    "New savings goal": "নতুন সঞ্চয়ের লক্ষ্য",
+    "Goal name": "লক্ষ্যের নাম",
+    "e.g. Buy a Laptop": "যেমন: ল্যাপটপ কেনা",
+    "New Laptop": "নতুন ল্যাপটপ",
+    "Target (": "লক্ষ্য (",
+    "Saved so far (": "এখন পর্যন্ত সঞ্চয় (",
+    "Target date": "লক্ষ্যের তারিখ",
+    "Optional — used to work out how much to save each month.": "ঐচ্ছিক — প্রতি মাসে কত সঞ্চয় করতে হবে তা হিসাব করতে কাজে লাগবে।",
+    "Delete this goal?": "এই লক্ষ্য মুছুন?",
+    "” and its progress will be removed.": "” এবং এর অগ্রগতি মুছে যাবে।",
+    "Goal deleted": "লক্ষ্য মুছে দেওয়া হয়েছে",
+    "Goal updated": "লক্ষ্য আপডেট হয়েছে",
+    "Goal created": "লক্ষ্য তৈরি হয়েছে",
+    "Enter a goal name": "লক্ষ্যের নাম লিখুন",
+    "Enter a target greater than zero": "শূন্যের চেয়ে বড় লক্ষ্য লিখুন",
+
+    /* assistant presets & misc */
+    "How can I save more money?": "আমি কীভাবে আরও টাকা সঞ্চয় করব?",
+    "Which category costs me the most?": "কোন ক্যাটাগরিতে সবচেয়ে বেশি খরচ হয়?",
+    "How much money did I save this month?": "এই মাসে আমি কত টাকা সঞ্চয় করেছি?",
+    "Give me a monthly savings plan.": "আমাকে একটা মাসিক সঞ্চয় পরিকল্পনা দিন।",
+    "Light theme on": "লাইট থিম চালু",
+    "Dark theme on": "ডার্ক থিম চালু",
+    "Export CSV": "CSV এক্সপোর্ট",
+    "No transactions to export": "এক্সপোর্ট করার মতো কোনো লেনদেন নেই",
+    "CSV exported": "CSV এক্সপোর্ট হয়েছে",
+    "This replaces all current transactions, budgets and goals with sample data.": "এটি বর্তমান সব লেনদেন, বাজেট ও লক্ষ্যকে নমুনা ডেটা দিয়ে প্রতিস্থাপন করবে।",
+    "This permanently deletes all transactions, budgets and goals. Export a backup first if needed.": "এটি সব লেনদেন, বাজেট ও লক্ষ্য স্থায়ীভাবে মুছে দেবে। প্রয়োজনে আগে ব্যাকআপ নিন।",
+    "Tip: use Export JSON or CSV to back up your data regularly, and Import JSON to restore it on another device.": "টিপ: নিয়মিত Export JSON বা CSV দিয়ে ব্যাকআপ রাখুন এবং অন্য ডিভাইসে Import JSON দিয়ে ফেরত আনুন।",
+    "Could not save data": "ডেটা সংরক্ষণ করা যায়নি",
+    "User": "ব্যবহারকারী",
+
+    /* assistant replies */
+    "I don't have any transactions yet. Add your income and expenses and ask me again.": "এখনো কোনো লেনদেন নেই। আয় আর খরচ যোগ করে আবার জিজ্ঞাসা করুন।",
+    "You have no expenses recorded for ": "আপনি ",
+    " yet.": " এখনো কোনো খরচ রেকর্ড করেননি।",
+    "Add your monthly income first, then I can build a savings plan around it.": "প্রথমে মাসিক আয় যোগ করুন, তবেই আমি আপনার জন্য সঞ্চয় পরিকল্পনা বানাতে পারব।",
+    "Based on a monthly income of ": "মাসিক আয় ",
+    ", here is a simple plan:": " ধরে, এটা একটা সহজ পরিকল্পনা:",
+    "• Needs (rent, bills, food, transport): ": "• প্রয়োজন (ভাড়া, বিদ্যুৎ, খাবার, যাতায়াত): ",
+    "• Savings: ": "• সঞ্চয়: ",
+    "• Wants (shopping, eating out, entertainment): ": "• চাহিদা (কেনাকাটা, বাইরে খাওয়া, বিনোদন): ",
+    "Split your savings across your goals:": "আপনার লক্ষ্যগুলোতে সঞ্চয় ভাগ করে দিন:",
+    "Here is what stands out in ": "এই ",
+    "-এ যা মনে দাঁড়িয়েছে:": "-এ যা মনে দাঁড়িয়েছে:",
+    "Try these three steps:": "এই তিনটি ধাপ চেষ্টা করুন:",
+    " costs you the most this month: ": " এই মাসে আপনার সবচেয়ে বেশি খরচ: ",
+    "Your top categories:": "আপনার প্রধান ক্যাটাগরি:",
+    " budget is ": " বাজেট ",
+    "% used.": "% ব্যবহৃত।",
+    "In ": "এই ",
+    " so far you earned ": " পর্যন্ত আপনার আয় ",
+    " and spent ": " এবং খরচ ",
+    "That means you saved ": "অর্থাৎ আপনি ",
+    " — ": " — ",
+    "% of your income.": "% আয়ের।",
+    "That means you are ": "অর্থাৎ আপনি ",
+    " short this month.": " কম আছেন এই মাসে।",
+    "You are ": "আপনার ",
+    " away from the suggested target of ": " পৌঁছাতে প্রস্তাবিত লক্ষ্য ",
+    ".": " বাকি আছে।",
+    "You have already reached the suggested target of ": "আপনি ইতিমধ্যেই প্রস্তাবিত লক্ষ্য ",
+    ". Great work!": " পৌঁছেছেন। দারুণ কাজ!",
+    "Hi! I can analyse your income, expenses, budgets, savings goals and spending habits. Try asking about your biggest expense, a monthly savings plan, or your savings rate.": "আসসালামুয়ালাইকুম! আমি আপনার আয়, খরচ, বাজেট, সঞ্চয়ের লক্ষ্য ও খরচের অভ্যাস বিশ্লেষণ করতে পারি। সবচেয়ে বড় খরচ, মাসিক সঞ্চয় পরিকল্পনা বা সঞ্চয়ের হার সম্পর্কে জিজ্ঞাসা করুন।",
+    "I can help with your savings rate, budgets, spending categories, income, goals and balance. Try one of the suggested questions above.": "আমি সঞ্চয়ের হার, বাজেট, খরচের ক্যাটাগরি, আয়, লক্ষ্য ও ব্যালেন্সে সাহায্য করতে পারি। উপরের প্রশ্নগুলোর একটি চেষ্টা করুন।",
+    "Am I over budget?": "আমি কি বাজেট অতিক্রম করেছি?",
+    "What is my balance?": "আমার ব্যালেন্স কত?",
+
+    /* categories */
+    "Salary": "বেতন", "Freelance": "ফ্রিল্যান্স", "Business": "ব্যবসা",
+    "Investment": "বিনিয়োগ", "Gift": "উপহার", "Other": "অন্যান্য",
+    "Food": "খাদ্য", "Rent": "ভাড়া", "Transport": "পরিবহন",
+    "Utilities": "ইউটিলিটি", "Shopping": "কেনাকাটা", "Health": "স্বাস্থ্য",
+    "Education": "শিক্ষা", "Entertainment": "বিনোদন",
+    "Emergency Fund": "জরুরি তহবিল", "Goals": "লক্ষ্য",
+
+    /* dates & common prepositions */
+    "in": "এ",
+    "January": "জানুয়ারী", "February": "ফেব্রুয়ারী", "March": "মার্চ", "April": "এপ্রিল",
+    "May": "মে", "June": "জুন", "July": "জুলাই", "August": "আগস্ট",
+    "September": "সেপ্টেম্বর", "October": "অক্টোবর", "November": "নভেম্বর", "December": "ডিসেম্বর",
+    "Jan": "জানু", "Feb": "ফেব্রু", "Mar": "মার্চ", "Apr": "এপ্র", "Jun": "জুন",
+    "Jul": "জুলা", "Aug": "আগ", "Sep": "সেপ্ট", "Oct": "অক্টো", "Nov": "নভে", "Dec": "ডিসে",
+    "Sat": "শনি", "Sun": "রবি", "Mon": "সোম", "Tue": "মঙ্গল", "Wed": "বুধ", "Thu": "বৃহঃ", "Fri": "শুক্র"
+  };
+
+  /* longest phrases first so "Total Income" wins over "Income" */
+  var RULES = Object.keys(DICT).sort(function (a, b) { return b.length - a.length; }).map(function (k) {
+    var esc = k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var start = /^\w/.test(k) ? "\\b" : "";
+    var end = /\w$/.test(k) ? "\\b" : "";
+    return [new RegExp(start + esc + end, "g"), DICT[k]];
+  });
+
+  function tr(text) {
+    if (current === "en") return text;
+    var out = String(text);
+    for (var i = 0; i < RULES.length; i++) out = out.replace(RULES[i][0], RULES[i][1]);
+    return out;
+  }
+
+  var TITLES = {
+    dashboard: ["Dashboard — HisabTrack", "ড্যাশবোর্ড — হিসাবট্র্যাক"],
+    transactions: ["Transactions — HisabTrack", "লেনদেন — হিসাবট্র্যাক"],
+    budgets: ["Budgets — HisabTrack", "বাজেট — হিসাবট্র্যাক"],
+    analytics: ["Analytics — HisabTrack", "অ্যানালিটিক্স — হিসাবট্র্যাক"],
+    assistant: ["Savings Assistant — HisabTrack", "সঞ্চয় সহকারী — হিসাবট্র্যাক"],
+    goals: ["Savings Goals — HisabTrack", "সঞ্চয়ের লক্ষ্য — হিসাবট্র্যাক"],
+    settings: ["Settings — HisabTrack", "সেটিংস — হিসাবট্র্যাক"]
+  };
+  function setTitle() {
+    var h = (location.hash || "").replace(/^#\/?/, "").split("?")[0];
+    var pair = TITLES[h] || TITLES.dashboard;
+    document.title = current === "bn" ? pair[1] : pair[0];
+  }
+
+  function injectToggle() {
+    var actions = document.querySelector(".topbar-actions");
+    if (!actions) return;
+    var box = document.getElementById("lang-toggle");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "lang-toggle";
+      box.className = "lang-switch";
+      box.innerHTML = '<button type="button" data-lang="en" title="English">EN</button><button type="button" data-lang="bn" title="বাংলা">বাং</button>';
+      actions.insertBefore(box, actions.firstChild);
+    }
+    var btns = box.querySelectorAll("button");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.toggle("active", btns[i].getAttribute("data-lang") === current);
+    }
+  }
+
+  function walk(node) {
+    if (!node) return;
+    if (node.nodeType === 3) {
+      var parent = node.parentNode;
+      if (parent && (parent.tagName === "SCRIPT" || parent.tagName === "STYLE")) return;
+      var t = node.nodeValue || "";
+      var n = tr(t);
+      if (n !== t) node.nodeValue = n;
+    } else if (node.nodeType === 1) {
+      if (node.tagName === "SCRIPT" || node.tagName === "STYLE") return;
+      var attrs = ["placeholder", "title", "aria-label"];
+      for (var a = 0; a < attrs.length; a++) {
+        var v = node.getAttribute(attrs[a]);
+        if (v) { var nv = tr(v); if (nv !== v) node.setAttribute(attrs[a], nv); }
+      }
+      var kids = Array.prototype.slice.call(node.childNodes || []);
+      for (var i = 0; i < kids.length; i++) walk(kids[i]);
+    }
+  }
+
+  var obs;
+  function flush(records) {
+    var roots = [];
+    records.forEach(function (r) {
+      if (r.type === "childList") {
+        Array.prototype.forEach.call(r.addedNodes, function (n) {
+          if (n.nodeType === 1 || n.nodeType === 3) roots.push(n);
+        });
+      } else if (r.type === "characterData") roots.push(r.target);
+    });
+    if (obs) obs.disconnect();
+    roots.forEach(walk);
+    injectToggle();
+    setTitle();
+    if (obs) obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+  }
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-lang]");
+    if (!b) return;
+    var lang = b.getAttribute("data-lang");
+    if (lang === current) return;
+    try { localStorage.setItem(KEY, lang); } catch (err) {}
+    location.reload();
+  });
+
+  function start() {
+    document.documentElement.lang = current;
+    obs = new MutationObserver(flush);
+    obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+    walk(document.body);
+    injectToggle();
+    setTitle();
+  }
+  if (document.body) start();
+  else document.addEventListener("DOMContentLoaded", start);
+  window.addEventListener("hashchange", function () { setTimeout(setTitle, 0); });
+})();
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="HisabTrack">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <circle cx="256" cy="256" r="176" fill="none" stroke="#ffffff" stroke-opacity=".18" stroke-width="10"/>
+  <text x="256" y="338" text-anchor="middle" font-family="Nirmala UI, Arial Unicode MS, Segoe UI Symbol, sans-serif" font-size="280" font-weight="700" fill="#ffffff">৳</text>
+</svg>
